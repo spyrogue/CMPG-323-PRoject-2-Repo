@@ -52,7 +52,6 @@ namespace CMPG_323_Project_2
                 ErrorName.Visible = true;
                 ErrorName.Text = "Invalid login credentials";
             }
-            //commit
         }
     }
 }
