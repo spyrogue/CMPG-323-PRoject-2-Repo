@@ -11,14 +11,15 @@
         }
         .auto-style2 {
             text-align: center;
-            font-size: xx-large;
+            font-size: 4.2rem;
+            font-weight: 100;
         }
         .auto-style3 {
-            text-align: right;
-            width: 677px;
+            text-align: center;
+            width: 824px;
         }
         .auto-style4 {
-            width: 677px;
+            width: 824px;
         }
         .auto-style5 {
             text-align: center;
@@ -36,7 +37,7 @@
     <form id="form1" runat="server">
         <table class="auto-style1">
             <tr>
-                <td class="auto-style2" colspan="3"><strong>Login</strong></td>
+                <td class="auto-style2" colspan="5">Login</td>
             </tr>
             <tr>
                 <td class="auto-style4">&nbsp;</td>
@@ -44,16 +45,16 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style3">Email</td>
+                <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="EmailTextBox" placeholder="Email Address" runat="server" Width="190px"></asp:TextBox>
+                    <asp:TextBox ID="EmailTextBox" placeholder="Email Address" runat="server" Width="190px" OnTextChanged="EmailTextBox_TextChanged"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RegularExpressionValidator ID="EmailValidator" runat="server" ControlToValidate="EmailTextBox" ErrorMessage="Please enter a correct email address" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style3">Username</td>
+                <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style5">
                     <asp:TextBox ID="UsernameTextBox" placeholder="Username" runat="server" Width="190px"></asp:TextBox>
                 </td>
@@ -62,7 +63,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style3">Password</td>
+                <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style5">
                     <asp:TextBox ID="PasswordTextBox" placeholder="Password" runat="server" Width="190px"></asp:TextBox>
                 </td>

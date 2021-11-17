@@ -22,7 +22,6 @@ namespace CMPG_323_Project_2
             da.Fill(ds);
             gdImage.DataSource = ds;
             gdImage.DataBind();
-
         }
 
         SqlConnection con;
@@ -37,15 +36,16 @@ namespace CMPG_323_Project_2
                 fileupload.SaveAs(Server.MapPath("~/Images/" + filename));
                 con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30");
                 con.Open();
-                cmd = new SqlCommand("insert into Image_Details (ImageName,ImagePath) values(@ImageName,@ImagePath)", con);
+                cmd = new SqlCommand("insert into Image_Details (ImageName,Image) values(@ImageName,@Image)", con);
                 cmd.Parameters.AddWithValue("@ImageName", filename);
-                cmd.Parameters.AddWithValue("@ImagePath", "Images/" + filename);
+                cmd.Parameters.AddWithValue("@Image", "Images/" + filename);
                 cmd.ExecuteNonQuery();
                 da = new SqlDataAdapter("select * from Image_Details", con);
                 ds = new DataSet();
                 da.Fill(ds);
                 gdImage.DataSource = ds;
                 gdImage.DataBind();
+                
             }
             catch (Exception ex)
             {
@@ -62,6 +62,7 @@ namespace CMPG_323_Project_2
             da.Fill(ds);
             gdImage.DataSource = ds;
             gdImage.DataBind();
+            upload.Text = "Upload";
         }
     }
 }

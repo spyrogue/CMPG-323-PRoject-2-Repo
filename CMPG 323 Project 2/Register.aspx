@@ -92,11 +92,17 @@
                         <tr>
                             <td class="auto-style8"></td>
                             <td class="auto-style9">
+                                &nbsp;</td>
+                            <td class="auto-style7">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style8">&nbsp;</td>
+                            <td class="auto-style9">
                 <asp:Button ID="Submit" runat="server" Text="Register" OnClick="Submit_Click2" Width="97px" />
                                 </td>
                             <td class="auto-style7">Have an account?
                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Login.aspx">Login</asp:HyperLink>
-                &nbsp;</td>
+                &nbsp;&nbsp;</td>
                         </tr>
                     </table>
                 </div>

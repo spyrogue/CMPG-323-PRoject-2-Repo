@@ -67,18 +67,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Albums.aspx" />
     <Content Include="Display_Image.aspx" />
+    <Content Include="Images.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Albums.aspx.cs">
+      <DependentUpon>Albums.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Albums.aspx.designer.cs">
+      <DependentUpon>Albums.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Display_Image.aspx.cs">
       <DependentUpon>Display_Image.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Display_Image.aspx.designer.cs">
       <DependentUpon>Display_Image.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Images.aspx.cs">
+      <DependentUpon>Images.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Images.aspx.designer.cs">
+      <DependentUpon>Images.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
