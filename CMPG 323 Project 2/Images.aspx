@@ -10,24 +10,10 @@
         .auto-style3 {
             margin-right: 0px;
         }
-        .auto-style1 {
-            width: 100%;
-        }
-        .auto-style2 {
-            text-align: right;
-            width: 606px;
-        }
         .auto-style3 {
             margin-right: 0px;
         }
-        .auto-style4 {
-            width: 606px;
-            text-align: center;
-        }
-        .auto-style5 {
-            text-align: center;
-        }
-
+        
         .mydatagrid
         {
         width: 50%;
@@ -106,13 +92,13 @@
         {
         padding: 5px;
         }
-        .auto-style6 {
-            text-align: left;
-            width: 606px;
-        }
-
+        
         form{
             background-color:powderblue;
+        }
+
+        .shareBtn{
+            background: url(\Images\Share.png) no-repeat 0 0;
         }
         </style>
 </head>
@@ -123,13 +109,9 @@
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <br />
         <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ImageId" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ImageId" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" OnRowCommand="GridView1_RowCommand">
             <Columns>
-                <asp:TemplateField >
-                    <ItemTemplate>
-                        <asp:Button ID="ShareBtn" ButtonType="Image" OnClick="ShareBtn_Click" runat="server" ImageUrl="~\Images\Share.png"/>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="ImageId" HeaderText="ImageId" ReadOnly="True" SortExpression="ImageId" />
                 <asp:BoundField DataField="ImageName" HeaderText="ImageName" SortExpression="ImageName" />
@@ -141,6 +123,12 @@
                 <asp:ImageField DataImageUrlField="Image" HeaderText="Image" ControlStyle-Height="200" ControlStyle-Width="200">
                 <ControlStyle Height="200px" Width="200px"></ControlStyle>
                 </asp:ImageField>
+                <asp:TemplateField >
+                    <ItemTemplate>
+                        <asp:Button ID="ShareBtn" ButtonType="Image" ForeColor="White" BackColor="DarkBlue" Text="Share" OnClick="ShareBtn_Click" runat="server" ImageUrl="~\Images\Share.png"  CssClass="shareBtn" ControlStyle-Height="40" ControlStyle-Width="70"/>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Download">Download</asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <HeaderStyle CssClass="header" />
             <RowStyle CssClass="rows" />

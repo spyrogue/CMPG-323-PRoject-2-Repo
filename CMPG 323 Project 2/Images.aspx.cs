@@ -17,6 +17,7 @@ namespace CMPG_323_Project_2
         public SqlCommand com;
         public DataSet ds;
         SqlDataAdapter adap;
+        SqlTransaction tran;
         public string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30";
 
 
@@ -34,6 +35,9 @@ namespace CMPG_323_Project_2
             TextBox4.Text = "#Live";
             TextBox5.Text = "Pine Slopes";
             TextBox6.Text = "Jozi";
+
+            com = new SqlCommand();
+            com.Connection = con;
         }
 
         protected void upload_Click(object sender, System.EventArgs e)
@@ -113,7 +117,82 @@ namespace CMPG_323_Project_2
 
         protected void ShareBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Albums.aspx");
+            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30");
+            con.Open();
+            tran = con.BeginTransaction();
+            com.Transaction = tran;
+            string slno = null;
+            try
+            {
+                foreach (GridViewRow g1 in GridView1.Rows)
+                {
+                    string imageName = (g1.FindControl("TextBox1") as TextBox).Text;
+                    string albumId = (g1.FindControl("TextBox2") as TextBox).Text;
+                    string capturedBy = (g1.FindControl("TextBox3") as TextBox).Text;
+                    string tags = (g1.FindControl("TextBox4") as TextBox).Text;
+                    string location = (g1.FindControl("TextBox5") as TextBox).Text;
+                    string user = (g1.FindControl("TextBox6") as TextBox).Text;
+                    string image = (g1.FindControl("TextBox7") as TextBox).Text;
+                    string query = "insert into Shared values(" + imageName + ",'" + albumId + "'," + capturedBy + ",'" + tags + "',"+location+"',"+user+"',"+image+")";
+                    //cmd.CommandText = "insert into Members values ('" + g1.Cells[0].Text + "','" + g1.Cells[1].Text + "','" + g1.Cells[2].Text + "','" + g1.Cells[3].Text + "')";  
+                    //slno = id;
+                    com.CommandText = query;
+                    com.ExecuteNonQuery();
+                }
+                tran.Commit();
+            }
+            catch(Exception ex)
+            {
+                upload.Text = ex.Message;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            /*con = new SqlConnection(connectionString);
+            con.Open();
+            ds = new DataSet();
+            adap = new SqlDataAdapter();
+            string sql = "INSERT INTO Shared VALUES('@ImageName','@AlbumId','@CapturedBy','@Tags','@Location','@User','Images/@Image')";
+            com = new SqlCommand(sql, con);
+            ds = new DataSet();
+            adap.SelectCommand = com;
+            adap.Fill(ds);
+            con.Close();
+            Response.Redirect("Images.aspx");*/
+        }
+
+        private string GetFileExtension(string fileExtension)
+        {
+            switch (fileExtension.ToLower())
+            {
+                case ".docx":
+                case ".doc":
+                    return "Microsoft Word Document";
+                case ".xlsx":
+                case ".xls":
+                    return "Microsoft Excel Document";
+                case ".txt":
+                    return "Text Document";
+                case ".jpg":
+                case ".png":
+                    return "Image";
+                default:
+                    return "Unknown";
+            }
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName == "Download")
+            {
+                Response.Clear();
+                Response.ContentType = "application/octet-stream";
+                Response.AppendHeader("Content-Disposition", "filename=" + e.CommandArgument);
+                Response.TransmitFile(Server.MapPath("~/Images/") + e.CommandArgument);
+                Response.End();
+            }
         }
     }
 }

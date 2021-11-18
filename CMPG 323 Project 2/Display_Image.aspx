@@ -138,7 +138,7 @@
                 <td class="auto-style5">  
                     &nbsp;</td>
                 <td class="auto-style5" colspan="1">  
-            <asp:GridView runat="server" ID="gdImage" HeaderStyle-BackColor="LightBlue"  AutoGenerateColumns="false" CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows">  
+            <asp:GridView runat="server" ID="gdImage" HeaderStyle-BackColor="LightBlue"  AutoGenerateColumns="false" CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnRowCommand="gdImage_RowCommand">  
                 <Columns>  
                     <asp:BoundField DataField="ImageId" HeaderText="ImageId" />  
                     <asp:BoundField DataField="ImageName" HeaderText="ImageName" />  

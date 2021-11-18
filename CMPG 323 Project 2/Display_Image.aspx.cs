@@ -64,5 +64,29 @@ namespace CMPG_323_Project_2
             gdImage.DataBind();
             upload.Text = "Upload";
         }
+        private string GetFileExtension(string fileExtension)
+        {
+            switch (fileExtension.ToLower())
+            {
+                case ".docx":
+                case ".doc":
+                    return "Microsoft Word Document";
+                case ".xlsx":
+                case ".xls":
+                    return "Microsoft Excel Document";
+                case ".txt":
+                    return "Text Document";
+                case ".jpg":
+                case ".png":
+                    return "Image";
+                default:
+                    return "Unknown";
+            }
+        }
+
+        protected void gdImage_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
     }
 }
