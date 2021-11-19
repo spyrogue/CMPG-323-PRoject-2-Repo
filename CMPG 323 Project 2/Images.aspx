@@ -125,7 +125,9 @@
                 </asp:ImageField>
                 <asp:TemplateField >
                     <ItemTemplate>
-                        <asp:Button ID="ShareBtn" ButtonType="Image" ForeColor="White" BackColor="DarkBlue" Text="Share" OnClick="ShareBtn_Click" runat="server" ImageUrl="~\Images\Share.png"  CssClass="shareBtn" ControlStyle-Height="40" ControlStyle-Width="70"/>
+                        <asp:Button ID="ShareBtn" ButtonType="Image" ForeColor="White" BackColor="DarkBlue" Text="Share" OnClick="ShareBtn_Click" runat="server" ImageUrl="\Images\Share.png"  CssClass="shareBtn" ControlStyle-Height="40" ControlStyle-Width="70"/>
+                        <asp:ImageButton ID="ImageButton1" runat="server" Height="80px" ImageUrl="\Images\Share.png" Width="80px" OnClick="ImageButton1_Click" />
+                        <br />
                         <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Download">Download</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -160,7 +162,8 @@
         <br />
         <asp:TextBox ID="TextBox1" placeholder="Image Name" runat="server" OnTextChanged="TextBox1_TextChanged" Width="200px"></asp:TextBox>
         <br />
-        <asp:TextBox ID="TextBox2" placeholder="Album Id" runat="server" Width="200px"></asp:TextBox>
+        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Album_Id" DataValueField="Album_Id" Height="23px" Width="208px">
+        </asp:DropDownList>
         <br />
         <asp:TextBox ID="TextBox3" placeholder="Captured B" runat="server" Width="200px"></asp:TextBox>
         <br />

@@ -72,6 +72,7 @@
     <Content Include="Images.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Shared.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +111,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Shared.aspx.cs">
+      <DependentUpon>Shared.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Shared.aspx.designer.cs">
+      <DependentUpon>Shared.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -46,7 +46,7 @@ namespace CMPG_323_Project_2
             {
                 con = new SqlConnection(connectionString);
                 string insertImageName = TextBox1.Text;
-                string insertAlbumId = TextBox2.Text;
+                string insertAlbumId = DropDownList1.SelectedValue;
                 string insertCapturedBy = TextBox3.Text;
                 string insertTags = TextBox4.Text;
                 string insertLocation = TextBox5.Text;
@@ -124,7 +124,7 @@ namespace CMPG_323_Project_2
             string slno = null;
             try
             {
-                foreach (GridViewRow g1 in GridView1.Rows)
+                /*foreach (GridViewRow g1 in GridView1.Rows)
                 {
                     string imageName = (g1.FindControl("TextBox1") as TextBox).Text;
                     string albumId = (g1.FindControl("TextBox2") as TextBox).Text;
@@ -139,7 +139,8 @@ namespace CMPG_323_Project_2
                     com.CommandText = query;
                     com.ExecuteNonQuery();
                 }
-                tran.Commit();
+                tran.Commit();*/
+
             }
             catch(Exception ex)
             {
@@ -192,6 +193,54 @@ namespace CMPG_323_Project_2
                 Response.AppendHeader("Content-Disposition", "filename=" + e.CommandArgument);
                 Response.TransmitFile(Server.MapPath("~/Images/") + e.CommandArgument);
                 Response.End();
+            }
+        }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30");
+            con.Open();
+            tran = con.BeginTransaction();
+            com.Transaction = tran;
+            string slno = null;
+            try
+            {
+                /*foreach (GridViewRow g1 in GridView1.Rows)
+                {
+                    string imageName = (g1.FindControl("TextBox1") as TextBox).Text;
+                    string albumId = (g1.FindControl("TextBox2") as TextBox).Text;
+                    string capturedBy = (g1.FindControl("TextBox3") as TextBox).Text;
+                    string tags = (g1.FindControl("TextBox4") as TextBox).Text;
+                    string location = (g1.FindControl("TextBox5") as TextBox).Text;
+                    string user = (g1.FindControl("TextBox6") as TextBox).Text;
+                    string image = (g1.FindControl("TextBox7") as TextBox).Text;
+                    string query = "insert into Shared values(" + imageName + ",'" + albumId + "'," + capturedBy + ",'" + tags + "'," + location + "'," + user + "'," + image + ")";
+                    //cmd.CommandText = "insert into Members values ('" + g1.Cells[0].Text + "','" + g1.Cells[1].Text + "','" + g1.Cells[2].Text + "','" + g1.Cells[3].Text + "')";  
+                    //slno = id;
+                    com.CommandText = query;
+                    com.ExecuteNonQuery();
+                }
+                tran.Commit();*/
+                con = new SqlConnection(connectionString);
+                con.Open();
+                ds = new DataSet();
+                adap = new SqlDataAdapter();
+                string sql = "INSERT INTO Shared" +
+                    "SELECT ImageName, Album Id, Captured By, Tags, Location, User, Image FROM Image_Details ";
+                com = new SqlCommand(sql, con);
+                ds = new DataSet();
+                adap.SelectCommand = com;
+                adap.Fill(ds);
+                con.Close();
+                Response.Redirect("Shared.aspx");
+            }
+            catch (Exception ex)
+            {
+                Label1.Text = ex.Message;
+            }
+            finally
+            {
+                con.Close();
             }
         }
     }
