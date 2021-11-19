@@ -128,7 +128,7 @@
                         <asp:Button ID="ShareBtn" ButtonType="Image" ForeColor="White" BackColor="DarkBlue" Text="Share" OnClick="ShareBtn_Click" runat="server" ImageUrl="\Images\Share.png"  CssClass="shareBtn" ControlStyle-Height="40" ControlStyle-Width="70"/>
                         <asp:ImageButton ID="ImageButton1" runat="server" Height="80px" ImageUrl="\Images\Share.png" Width="80px" OnClick="ImageButton1_Click" CommandName="Download" />
                         <br />
-                        <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Download">Download</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Download" OnClick="LinkButton1_Click" Text="Download"></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

@@ -190,14 +190,16 @@ namespace CMPG_323_Project_2
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if(e.CommandName == "Download")
+            
+            /*if (e.CommandName == "Download")
             {
                 Response.Clear();
-                Response.ContentType = "application/octet-stream";
-                Response.AppendHeader("Content-Disposition", "filename=" + e.CommandArgument);
-                Response.TransmitFile(@"C:\Users\Brandon\source\repos\CMPG 323 Project 2\CMPG 323 Project 2\Images\Share.png");
+                Response.ContentType = "Image/.png";
+                Response.AppendHeader("Content-Disposition", "attachmentl;filename=/" + e.CommandArgument);
+                Response.Write("<script>alert('" + ("/Images/") + "')</script>");
+                Response.TransmitFile("/Images/");
                 Response.End();
-            }
+            }*/
         }
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
@@ -246,6 +248,43 @@ namespace CMPG_323_Project_2
             {
                 con.Close();
             }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            LinkButton linkdownload = sender as LinkButton;
+            GridView gridrow = linkdownload.NamingContainer as GridView;
+            Response.Write("<script>alert('" + linkdownload.NamingContainer + "')</script>");
+            /*string downloadFile = GridView1.DataKeys.Value.ToString();
+            Response.ContentType = "Image/jpg";
+            Response.AddHeader("ContentDisposition", "attachment;filename=\"" + downloadFile + "\"");
+            Response.TransmitFile(Server.MapPath(downloadFile));
+            Response.End();*/
+
+            con = new SqlConnection(connectionString);
+            con.Open();
+            ds = new DataSet();
+            adap = new SqlDataAdapter();
+            string sql = "SELECT Image FROM Image_Details";
+            com = new SqlCommand(sql, con);
+            ds = new DataSet();
+            adap.SelectCommand = com;
+            adap.Fill(ds);
+
+            Response.Write("<script>alert('" + ("/Images/") + "')</script>");
+
+            /*Response.Clear();
+            Response.ContentType = "Image/.png";
+            Response.AppendHeader("Content-Disposition", "attachment;filename=/");*/
+            //Response.TransmitFile("/Images/"+ds+".png");
+            Response.End();
+
+            /*Response.Clear();
+            Response.ContentType = "application/octet-stream";
+            Response.AppendHeader("Content-Disposition", "filename=");
+            Response.TransmitFile(@"~\Images\.png");
+            Response.End();*/
+            con.Close();
         }
     }
 }
