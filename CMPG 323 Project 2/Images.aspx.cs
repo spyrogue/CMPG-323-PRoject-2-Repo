@@ -30,7 +30,6 @@ namespace CMPG_323_Project_2
              adap.Fill(ds);
              con.Close();*/
             TextBox1.Text = "Brandon";
-            TextBox2.Text = "2";
             TextBox3.Text = "BB";
             TextBox4.Text = "#Live";
             TextBox5.Text = "Pine Slopes";
@@ -46,7 +45,7 @@ namespace CMPG_323_Project_2
             {
                 con = new SqlConnection(connectionString);
                 string insertImageName = TextBox1.Text;
-                string insertAlbumId = DropDownList1.SelectedValue;
+                string insertAlbumId = DropDownList2.SelectedValue;
                 string insertCapturedBy = TextBox3.Text;
                 string insertTags = TextBox4.Text;
                 string insertLocation = TextBox5.Text;
@@ -64,7 +63,7 @@ namespace CMPG_323_Project_2
                 adap.SelectCommand = com;
                 adap.Fill(ds);
                 con.Close();
-                Response.Redirect("Images.aspx");
+                
 
                 /*con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30");
                 con.Open();
@@ -82,11 +81,16 @@ namespace CMPG_323_Project_2
                 adap.Fill(ds);
                 GridView1.DataSource = ds;
                 GridView1.DataBind();*/
+                if (insertAlbumId != "Album Id")
+                {
+                    Label1.Text = "Please select a album that exists or create an album with the selected index";
+                }
+                Response.Redirect("Images.aspx");
 
             }
             catch (Exception ex)
             {
-                upload.Text = ex.Message;
+                Response.Write("<script>alert('Could not upload file')</script>");
             }
         }
 
@@ -191,7 +195,7 @@ namespace CMPG_323_Project_2
                 Response.Clear();
                 Response.ContentType = "application/octet-stream";
                 Response.AppendHeader("Content-Disposition", "filename=" + e.CommandArgument);
-                Response.TransmitFile(Server.MapPath("~/Images/") + e.CommandArgument);
+                Response.TransmitFile(@"C:\Users\Brandon\source\repos\CMPG 323 Project 2\CMPG 323 Project 2\Images\Share.png");
                 Response.End();
             }
         }

@@ -126,7 +126,7 @@
                 <asp:TemplateField >
                     <ItemTemplate>
                         <asp:Button ID="ShareBtn" ButtonType="Image" ForeColor="White" BackColor="DarkBlue" Text="Share" OnClick="ShareBtn_Click" runat="server" ImageUrl="\Images\Share.png"  CssClass="shareBtn" ControlStyle-Height="40" ControlStyle-Width="70"/>
-                        <asp:ImageButton ID="ImageButton1" runat="server" Height="80px" ImageUrl="\Images\Share.png" Width="80px" OnClick="ImageButton1_Click" />
+                        <asp:ImageButton ID="ImageButton1" runat="server" Height="80px" ImageUrl="\Images\Share.png" Width="80px" OnClick="ImageButton1_Click" CommandName="Download" />
                         <br />
                         <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Download">Download</asp:LinkButton>
                     </ItemTemplate>
@@ -162,8 +162,9 @@
         <br />
         <asp:TextBox ID="TextBox1" placeholder="Image Name" runat="server" OnTextChanged="TextBox1_TextChanged" Width="200px"></asp:TextBox>
         <br />
-        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="Album_Id" DataValueField="Album_Id" Height="23px" Width="208px">
+        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="Album Id" DataValueField="Album Id">
         </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ImageUserConnectionString1 %>" SelectCommand="SELECT * FROM [Albums]"></asp:SqlDataSource>
         <br />
         <asp:TextBox ID="TextBox3" placeholder="Captured B" runat="server" Width="200px"></asp:TextBox>
         <br />
