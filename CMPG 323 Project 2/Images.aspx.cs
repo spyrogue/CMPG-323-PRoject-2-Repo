@@ -135,15 +135,14 @@ namespace CMPG_323_Project_2
 
         protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
         {
-            /*string shared = (GridView1.SelectedRow.Cells[8]).Text;
-            Label1.Text = shared;*/
-            
-            //Response.Write("<script>alert('" + _Name + "')</script>");
-            /*Response.Clear();
+            string shared = (GridView1.SelectedRow.Cells[10]).Text;
+            Response.Clear();
             Response.ContentType = "application/octet-stream";
-            Response.AppendHeader("Content-Disposition", "filename=");
-            Response.TransmitFile(@"~\Images\" + shared + ".png");
-            Response.End();*/
+            Response.AppendHeader("Content-Disposition", "filename=" + shared);
+            Response.TransmitFile(Server.MapPath(shared));
+            Response.End();
+
+
         }
 
         protected void ShareBtn_Click(object sender, EventArgs e)
