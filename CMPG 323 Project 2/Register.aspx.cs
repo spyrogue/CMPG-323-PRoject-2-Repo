@@ -14,6 +14,7 @@ namespace CMPG_323_Project_2
         protected void Page_Load(object sender, EventArgs e)
         {
             LinkButton1.Visible = false;
+            
         }
 
         string construct = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30";
@@ -23,7 +24,6 @@ namespace CMPG_323_Project_2
         SqlCommand command;
         protected void Submit_Click2(object sender, EventArgs e)
         {
-            HttpCookie loginDetails = new HttpCookie("User_Table");
             if (EmailTBox.Text == "")
             {
                 PasswordValid.Enabled = true;
@@ -38,11 +38,9 @@ namespace CMPG_323_Project_2
             }
             else
             {
-                loginDetails["Email"] = EmailTBox.Text;
-                loginDetails["Username"] = UsernameTBox.Text;
-                loginDetails["Password"] = PasswordTBox.Text;
-                Response.Cookies.Add(loginDetails);
-                loginDetails.Expires = DateTime.Now.AddMinutes(1);
+                Session["Email"] = EmailTBox.Text;
+                Session["Username"] = UsernameTBox.Text;
+                Session["Password"] = PasswordTBox.Text;
 
                 string insert_query = @"INSERT INTO User_Table VALUES(@Email,@Username,HASHBYTES('SHA1',@Password))";
                 connect = new SqlConnection(construct);
@@ -53,7 +51,7 @@ namespace CMPG_323_Project_2
                 command.Parameters.AddWithValue("@Password", PasswordTBox.Text);
                 command.ExecuteNonQuery();
                 connect.Close();
-                Response.Redirect("Login.aspx");
+                //Response.Redirect("Login.aspx");
             }
         }
 
@@ -63,6 +61,32 @@ namespace CMPG_323_Project_2
             Session["LogInUsername"] = null;
             Session["LogInPassword"] = null;
             Response.Redirect("Login.aspx");
+        }
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(CheckBox1.Checked == false)
+            {
+                PasswordTBox.TextMode = TextBoxMode.Password;
+                PasswordConfTbox.TextMode = TextBoxMode.Password;
+            }
+            else
+            {
+                PasswordTBox.TextMode = TextBoxMode.SingleLine;
+                PasswordConfTbox.TextMode = TextBoxMode.SingleLine;
+            }
+            
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string encrypt = @"SELECT Password User_Table VALUES(@Email,@Username,HASHBYTES('SHA1',@Password))";
+            string decrypt = @"SELECT Password User_Table Whe";
+            Response.Write("<script>alert('" + encrypt + "')</script>");
+            if (encrypt == decrypt)
+            {
+                CheckBox1.Text = "True";
+            }
         }
     }
 }

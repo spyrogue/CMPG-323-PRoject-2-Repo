@@ -123,6 +123,15 @@
         .register{
             width:100px;
         }
+        .auto-style11 {
+            width: 816px;
+            height: 44px;
+        }
+        .auto-style12 {
+            text-align: left;
+            width: 822px;
+            height: 44px;
+        }
     </style>
     
 </head>
@@ -179,37 +188,40 @@
                             <td class="auto-style6">
                 <asp:TextBox ID="EmailTBox" placeholder="Email Address" runat="server" CssClass="textboxStyle"></asp:TextBox></td>
                             <td class="auto-style3">
-                    <asp:RegularExpressionValidator ID="EmailValid" runat="server" ControlToValidate="EmailTBox" ErrorMessage="Please enter your email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="EmailValid" runat="server" ControlToValidate="EmailTBox" ErrorMessage="Please enter your email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ForeColor="Red"></asp:RegularExpressionValidator>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style6">&nbsp;</td>
-                            <td class="auto-style6">
+                            <td class="auto-style11"></td>
+                            <td class="auto-style11">
                 <asp:TextBox ID="UsernameTBox" placeholder="Username" runat="server" CssClass="textboxStyle"></asp:TextBox></td>
-                            <td class="auto-style3">
-                        <asp:RequiredFieldValidator ID="UsernameValid" runat="server" ControlToValidate="UsernameTBox" ErrorMessage="Please enter your username" ForeColor="Black"></asp:RequiredFieldValidator>
+                            <td class="auto-style12">
+                        <asp:RequiredFieldValidator ID="UsernameValid" runat="server" ControlToValidate="UsernameTBox" ErrorMessage="Please enter your username" ForeColor="Red"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style6"></td>
-                            <td class="auto-style6">
-                <asp:TextBox ID="PasswordTBox" placeholder="Password" runat="server"  TextMode="Password" CssClass="textboxStyle"></asp:TextBox></td>
-                            <td class="auto-style3">
-                        <asp:RequiredFieldValidator ID="PasswordValid" runat="server" ControlToValidate="PasswordTBox" ErrorMessage="Invalid password" ForeColor="Black"></asp:RequiredFieldValidator>
+                            <td class="auto-style11"></td>
+                            <td class="auto-style11">
+                <asp:TextBox ID="PasswordTBox" placeholder="Password" runat="server"  CssClass="textboxStyle" TextMode="Password"></asp:TextBox></td>
+                            <td class="auto-style12">
+                        <asp:RequiredFieldValidator ID="PasswordValid" runat="server" ControlToValidate="PasswordTBox" ErrorMessage="Invalid password" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:CheckBox ID="CheckBox1" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Show password" AutoPostBack="True" />
                                 <br />
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style6">&nbsp;</td>
                             <td class="auto-style6">
-                <asp:TextBox ID="PasswordConfTbox" placeholder="Confirm Password" runat="server" TextMode="Password" CssClass="textboxStyle"></asp:TextBox>
+                <asp:TextBox ID="PasswordConfTbox" placeholder="Confirm Password" runat="server"  CssClass="textboxStyle" TextMode="Password"></asp:TextBox>
                             </td>
                             <td class="auto-style3">
-                        <asp:RequiredFieldValidator ID="PasswordConfValid" runat="server" ControlToValidate="PasswordConfTbox" ErrorMessage="Invalid password" ForeColor="Black"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="PasswordConfValid" runat="server" ControlToValidate="PasswordConfTbox" ErrorMessage="Invalid password" ForeColor="Red"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style10"></td>
+                            <td class="auto-style10">
+                                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                            </td>
                             <td class="auto-style9">
                                 &nbsp;</td>
                             <td class="auto-style7">&nbsp;</td>
