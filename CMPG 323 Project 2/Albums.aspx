@@ -4,10 +4,40 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <style type="text/css">
+        .auto-style8
+        {
+            background-color:midnightblue;
+            color:white;
+            font-size:xx-large;
+            font-family:sans-serif
+        }
+        </style>
     <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
+        <table class="auto-style8">
+        <tr>
+            <td class="auto-style2">Photo Album</td>
+            <td class="auto-style7">
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Images.aspx" ForeColor="White">Manage images</asp:HyperLink>
+            </td>
+            <td class="auto-style1">
+                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Albums.aspx" ForeColor="White">Manage albums</asp:HyperLink>
+            </td>
+            <td class="auto-style4">
+                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Shared.aspx" ForeColor="White">Shared images</asp:HyperLink>
+            </td>
+            <td class="auto-style5">&nbsp;</td>
+            <td class="login">
+                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Login.aspx" ForeColor="White">Login</asp:HyperLink>
+            </td>
+            <td class="register">
+                <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Register.aspx" ForeColor="White">Register</asp:HyperLink>
+            </td>
+        </tr>
+    </table>
         <div>
             Albums<br />
             <br />

@@ -44,7 +44,7 @@ namespace CMPG_323_Project_2
                 Response.Cookies.Add(loginDetails);
                 loginDetails.Expires = DateTime.Now.AddMinutes(1);
 
-                string insert_query = @"INSERT INTO User_Table VALUES(@Email,@Username,@Password)";
+                string insert_query = @"INSERT INTO User_Table VALUES(@Email,@Username,HASHBYTES('SHA1',@Password))";
                 connect = new SqlConnection(construct);
                 connect.Open();
                 command = new SqlCommand(insert_query, connect);

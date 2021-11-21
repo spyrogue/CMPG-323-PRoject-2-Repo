@@ -100,86 +100,119 @@
         .shareBtn{
             background: url(\Images\Share.png) no-repeat 0 0;
         }
+
+        .auto-style8
+        {
+            background-color:midnightblue;
+            color:white;
+            font-size:xx-large;
+            font-family:sans-serif
+        }
+        .auto-style9 {
+            margin-bottom: 0px;
+        }
+        .auto-style10 {
+            width: 921px;
+        }
+
+        .style-imagePath{
+            display:none;
+        }
         </style>
 </head>
 <body style="height: 246px">
+    <table class="auto-style8">
+        <tr>
+            <td class="auto-style2">Photo Album</td>
+            <td class="auto-style7">
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Images.aspx" ForeColor="White">Manage images</asp:HyperLink>
+            </td>
+            <td class="auto-style1">
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Albums.aspx" ForeColor="White">Manage albums</asp:HyperLink>
+            </td>
+            <td class="auto-style4">
+                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Shared.aspx" ForeColor="White">Shared images</asp:HyperLink>
+            </td>
+            <td class="auto-style5">&nbsp;</td>
+            <td class="login">
+                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Login.aspx" ForeColor="White">Login</asp:HyperLink>
+            </td>
+            <td class="register">
+                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Register.aspx" ForeColor="White">Register</asp:HyperLink>
+            </td>
+        </tr>
+    </table>
     <form id="form1" runat="server">
 &nbsp;select image:
         <br />
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <br />
-        <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ImageId" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" OnRowCommand="GridView1_RowCommand">
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style10">&nbsp;</td>
+                <td>
+        <asp:TextBox ID="TextBox1" placeholder="Image Name" runat="server" OnTextChanged="TextBox1_TextChanged" Width="200px"></asp:TextBox>
+                    <br />
+        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="Album Id" DataValueField="Album Id">
+        </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ImageUserConnectionString1 %>" SelectCommand="SELECT * FROM [Albums]"></asp:SqlDataSource>
+        <asp:TextBox ID="TextBox3" placeholder="Captured B" runat="server" Width="200px"></asp:TextBox>
+                    <br />
+        <asp:TextBox ID="TextBox4" placeholder="Tags" runat="server" Width="200px"></asp:TextBox>
+                    <br />
+        <asp:TextBox ID="TextBox5" placeholder="Location" runat="server" Width="200px"></asp:TextBox>
+                    <br />
+        <asp:TextBox ID="TextBox6" placeholder="User" runat="server" Width="200px"></asp:TextBox>
+                    <br />
+    <asp:FileUpload ID="fileupload" runat="server" CssClass="auto-style3" />  
+                    <br />
+        <asp:Button ID="upload" runat="server" Font-Bold="true" Text="Upload" OnClick="upload_Click" CssClass="auto-style9" />  
+                    <br />
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style10">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ImageId" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" OnRowCommand="GridView1_RowCommand" AllowSorting="True">
             <Columns>
                 
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                <asp:CommandField ShowSelectButton="True" />
                 <asp:BoundField DataField="ImageId" HeaderText="ImageId" ReadOnly="True" SortExpression="ImageId" />
                 <asp:BoundField DataField="ImageName" HeaderText="ImageName" SortExpression="ImageName" />
-                <asp:BoundField DataField="Album_Id" HeaderText="Album_Id" SortExpression="Album_Id" />
-                <asp:BoundField DataField="Captured_By" HeaderText="Captured_By" SortExpression="Captured_By" />
+                <asp:BoundField DataField="Album Id" HeaderText="Album Id" SortExpression="Album Id" />
+                <asp:BoundField DataField="Captured By" HeaderText="Captured By" SortExpression="Captured By" />
                 <asp:BoundField DataField="Tags" HeaderText="Tags" SortExpression="Tags" />
                 <asp:BoundField DataField="Location" HeaderText="Location" SortExpression="Location" />
                 <asp:BoundField DataField="User" HeaderText="User" SortExpression="User" />
-                <asp:ImageField DataImageUrlField="Image" HeaderText="Image" ControlStyle-Height="200" ControlStyle-Width="200">
-                <ControlStyle Height="200px" Width="200px"></ControlStyle>
-                </asp:ImageField>
-                <asp:TemplateField >
-                    <ItemTemplate>
-                        <asp:Button ID="ShareBtn" ButtonType="Image" ForeColor="White" BackColor="DarkBlue" Text="Share" OnClick="ShareBtn_Click" runat="server" ImageUrl="\Images\Share.png"  CssClass="shareBtn" ControlStyle-Height="40" ControlStyle-Width="70"/>
-                        <asp:ImageButton ID="ImageButton1" runat="server" Height="80px" ImageUrl="\Images\Share.png" Width="80px" OnClick="ImageButton1_Click" CommandName="Download" />
-                        <br />
-                        <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Download" OnClick="LinkButton1_Click" Text="Download"></asp:LinkButton>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:ImageField DataImageUrlField="Image" HeaderText="Image" ControlStyle-Height="200" ControlStyle-Width="200" />
+                <asp:BoundField DataField="ImagePath" HeaderText="ImagePath" ControlStype-CssClass="style-imagePath" SortExpression="ImagePath" />
             </Columns>
             <HeaderStyle CssClass="header" />
             <RowStyle CssClass="rows" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ImageUserConnectionString1 %>" DeleteCommand="DELETE FROM [Image_Details] WHERE [ImageId] = @ImageId" InsertCommand="INSERT INTO [Image_Details] ([ImageName], [Album Id], [Captured By], [Tags], [Location], [User], [Image]) VALUES (@ImageName, @Album_Id, @Captured_By, @Tags, @Location, @User, @Image)" SelectCommand="SELECT [ImageId], [ImageName], [Album Id] AS Album_Id, [Captured By] AS Captured_By, [Tags], [Location], [User], [Image] FROM [Image_Details]" UpdateCommand="UPDATE [Image_Details] SET [ImageName] = @ImageName, [Album Id] = @Album_Id, [Captured By] = @Captured_By, [Tags] = @Tags, [Location] = @Location, [User] = @User, [Image] = @Image WHERE [ImageId] = @ImageId">
-            <DeleteParameters>
-                <asp:Parameter Name="ImageId" Type="Int32" />
-            </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="ImageName" Type="String" />
-                <asp:Parameter Name="Album_Id" Type="Int32" />
-                <asp:Parameter Name="Captured_By" Type="String" />
-                <asp:Parameter Name="Tags" Type="String" />
-                <asp:Parameter Name="Location" Type="String" />
-                <asp:Parameter Name="User" Type="String" />
-                <asp:Parameter Name="Image" Type="String" />
-            </InsertParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="ImageName" Type="String" />
-                <asp:Parameter Name="Album_Id" Type="Int32" />
-                <asp:Parameter Name="Captured_By" Type="String" />
-                <asp:Parameter Name="Tags" Type="String" />
-                <asp:Parameter Name="Location" Type="String" />
-                <asp:Parameter Name="User" Type="String" />
-                <asp:Parameter Name="Image" Type="String" />
-                <asp:Parameter Name="ImageId" Type="Int32" />
-            </UpdateParameters>
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style10">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <br />
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ImageUserConnectionString1 %>" SelectCommand="SELECT * FROM [Image_Details]">
         </asp:SqlDataSource>
         <br />
-        <asp:TextBox ID="TextBox1" placeholder="Image Name" runat="server" OnTextChanged="TextBox1_TextChanged" Width="200px"></asp:TextBox>
-        <br />
-        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="Album Id" DataValueField="Album Id">
-        </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ImageUserConnectionString1 %>" SelectCommand="SELECT * FROM [Albums]"></asp:SqlDataSource>
-        <br />
-        <asp:TextBox ID="TextBox3" placeholder="Captured B" runat="server" Width="200px"></asp:TextBox>
-        <br />
-        <asp:TextBox ID="TextBox4" placeholder="Tags" runat="server" Width="200px"></asp:TextBox>
-        <br />
-        <asp:TextBox ID="TextBox5" placeholder="Location" runat="server" Width="200px"></asp:TextBox>
-        <br />
-        <asp:TextBox ID="TextBox6" placeholder="User" runat="server" Width="200px"></asp:TextBox>
-        <br />
-    <asp:FileUpload ID="fileupload" runat="server" CssClass="auto-style3" />  
         <br />
         <br />
-        <asp:Button ID="upload" runat="server" Font-Bold="true" Text="Upload" OnClick="upload_Click" />  
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
                 <br />
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
     </form>
 </body>
 </html>

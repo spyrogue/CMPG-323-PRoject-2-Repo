@@ -114,9 +114,36 @@ namespace CMPG_323_Project_2
 
         }
 
+        protected void DownloadFile(string name)
+        {
+            string _path = Request.PhysicalApplicationPath + "CV/" + name;
+            System.IO.FileInfo _file = new System.IO.FileInfo(_path);
+            if (_file.Exists)
+            {
+                Response.Clear();
+                Response.AddHeader("Content-Disposition", "attachment; filename=" + _file.Name);
+                Response.AddHeader("Content-Length", _file.Length.ToString());
+                Response.ContentType = "application/octet-stream";
+                Response.WriteFile(_file.FullName);
+                Response.End();
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(Type.GetType("System.String"), "messagebox", "&lt;script type=\"text/javascript\"&gt;alert('File not Found');</script>");
+            }
+        }
+
         protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
         {
+            /*string shared = (GridView1.SelectedRow.Cells[8]).Text;
+            Label1.Text = shared;*/
             
+            //Response.Write("<script>alert('" + _Name + "')</script>");
+            /*Response.Clear();
+            Response.ContentType = "application/octet-stream";
+            Response.AppendHeader("Content-Disposition", "filename=");
+            Response.TransmitFile(@"~\Images\" + shared + ".png");
+            Response.End();*/
         }
 
         protected void ShareBtn_Click(object sender, EventArgs e)
@@ -193,25 +220,37 @@ namespace CMPG_323_Project_2
             
             /*if (e.CommandName == "Download")
             {
+                int i = Convert.ToInt32(GridView1.SelectedIndex);
+                string shared = GridView1.SelectedRow.Cells[7].Text;
+
                 Response.Clear();
+                Response.ContentType = "application/octet-stream";
+                Response.AppendHeader("Content-Disposition", "filename=");
+                Response.TransmitFile(@"~\Images\" + shared + ".png");
+                Response.End();
+
+                *//*Response.Clear();
                 Response.ContentType = "Image/.png";
                 Response.AppendHeader("Content-Disposition", "attachmentl;filename=/" + e.CommandArgument);
                 Response.Write("<script>alert('" + ("/Images/") + "')</script>");
                 Response.TransmitFile("/Images/");
-                Response.End();
+                Response.End();*//*
             }*/
         }
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30");
+
+            string _Name = ((ImageButton)sender).CommandArgument;
+            DownloadFile(_Name);
+            /*con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30");
             con.Open();
             tran = con.BeginTransaction();
             com.Transaction = tran;
             string slno = null;
             try
             {
-                /*foreach (GridViewRow g1 in GridView1.Rows)
+                *//*foreach (GridViewRow g1 in GridView1.Rows)
                 {
                     string imageName = (g1.FindControl("TextBox1") as TextBox).Text;
                     string albumId = (g1.FindControl("TextBox2") as TextBox).Text;
@@ -226,7 +265,7 @@ namespace CMPG_323_Project_2
                     com.CommandText = query;
                     com.ExecuteNonQuery();
                 }
-                tran.Commit();*/
+                tran.Commit();*//*
                 con = new SqlConnection(connectionString);
                 con.Open();
                 ds = new DataSet();
@@ -247,44 +286,33 @@ namespace CMPG_323_Project_2
             finally
             {
                 con.Close();
-            }
+            }*/
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            LinkButton linkdownload = sender as LinkButton;
+            
+            /*LinkButton linkdownload = sender as LinkButton;
             GridView gridrow = linkdownload.NamingContainer as GridView;
-            Response.Write("<script>alert('" + linkdownload.NamingContainer + "')</script>");
-            /*string downloadFile = GridView1.DataKeys.Value.ToString();
+            string downloadFile = GridView1.DataKeys[gridrow.RowIndex].Value.ToString();
             Response.ContentType = "Image/jpg";
             Response.AddHeader("ContentDisposition", "attachment;filename=\"" + downloadFile + "\"");
             Response.TransmitFile(Server.MapPath(downloadFile));
             Response.End();*/
 
-            con = new SqlConnection(connectionString);
-            con.Open();
-            ds = new DataSet();
-            adap = new SqlDataAdapter();
-            string sql = "SELECT Image FROM Image_Details";
-            com = new SqlCommand(sql, con);
-            ds = new DataSet();
-            adap.SelectCommand = com;
-            adap.Fill(ds);
-
-            Response.Write("<script>alert('" + ("/Images/") + "')</script>");
+            //Response.Write("<script>alert('" + downloadFile + "')</script>");
 
             /*Response.Clear();
             Response.ContentType = "Image/.png";
             Response.AppendHeader("Content-Disposition", "attachment;filename=/");*/
             //Response.TransmitFile("/Images/"+ds+".png");
-            Response.End();
+            //Response.End();
 
             /*Response.Clear();
             Response.ContentType = "application/octet-stream";
             Response.AppendHeader("Content-Disposition", "filename=");
-            Response.TransmitFile(@"~\Images\.png");
+            Response.TransmitFile(@"~\Images\"+ shared + "Shared.png");
             Response.End();*/
-            con.Close();
         }
     }
 }
