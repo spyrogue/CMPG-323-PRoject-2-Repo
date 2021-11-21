@@ -22,18 +22,33 @@ namespace CMPG_323_Project_2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*con = new SqlConnection(connectionString);
+            con = new SqlConnection(connectionString);
             con.Open();
-            string sql = "SELECT * FROM Image_Details WHERE [User] LIKE '%" + Session["LogInUsername"].ToString() +"'";
-            ds = new DataSet();
-            adap = new SqlDataAdapter();
-            com = new SqlCommand(sql, con);
-            //com.ExecuteNonQuery();
-            adap.SelectCommand = com;
-            adap.Fill(ds);
-            GridView1.DataSource = ds;
-            GridView1.DataBind();
-            con.Close();*/
+            
+            if (!string.IsNullOrEmpty(Session["LogInUsername"] as string))
+            {
+                string sql = "SELECT * FROM Image_Details WHERE [User] LIKE '%" + Session["LogInUsername"].ToString() + "'";
+                ds = new DataSet();
+                adap = new SqlDataAdapter();
+                com = new SqlCommand(sql, con);
+                //com.ExecuteNonQuery();
+                adap.SelectCommand = com;
+                adap.Fill(ds);
+                GridView1.DataSource = ds;
+                GridView1.DataBind();
+                HyperLink5.Visible = false;
+                HyperLink6.Visible = false;
+                LinkButton1.Visible = true;
+            }
+            else
+            {
+                Response.Write("<script>alert('Please login to view this content')</script>");
+                Label1.Visible = false;
+                TextBox1.Visible = false;
+                Button1.Visible = false;
+                GridView1.Visible = false;
+            }
+            con.Close();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -51,6 +66,14 @@ namespace CMPG_323_Project_2
             GridView1.DataSource = ds;
             GridView1.DataBind();
             con.Close();
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["LogInEmail"] = null;
+            Session["LogInUsername"] = null;
+            Session["LogInPassword"] = null;
+            Response.Redirect("Login.aspx");
         }
     }
 }

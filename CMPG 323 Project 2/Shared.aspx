@@ -100,19 +100,7 @@
             font-family:sans-serif;
             width:1900px;
         }
-        .auto-style9 {
-            width: 239px;
-        }
-        .auto-style10 {
-            width: 195px;
-        }
-        .auto-style11 {
-            width: 233px;
-        }
-        .auto-style12 {
-            width: 428px;
-        }
-
+        
         body{
             background-color:powderblue;
         }
@@ -153,23 +141,24 @@
         <tr>
             <td class="photoAlbum">Photo Album</td>
             <td class="manageImages">
-                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Images.aspx" ForeColor="White">Manage images</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Images.aspx" ForeColor="White" Font-Underline="false">Manage images</asp:HyperLink>
             </td>
             <td class="manageAlbums">
-                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Albums.aspx" ForeColor="White">Manage albums</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Albums.aspx" ForeColor="White" Font-Underline="false">Manage albums</asp:HyperLink>
             </td>
             <td class="sharedImages">
-                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Shared.aspx" ForeColor="White">Shared images</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Shared.aspx" ForeColor="White" Font-Underline="false">Shared images</asp:HyperLink>
             </td>
             <td class="searchImages">
-                <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/SearchImage.aspx" ForeColor="White">Search images</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/SearchImage.aspx" ForeColor="White" Font-Underline="false">Search images</asp:HyperLink>
             </td>
             <td class="spacer">&nbsp;</td>
             <td class="login">
-                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Login.aspx" ForeColor="White">Login</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Login.aspx" ForeColor="White" Font-Underline="false">Login</asp:HyperLink>
             </td>
             <td class="register">
-                <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Register.aspx" ForeColor="White">Register</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Register.aspx" ForeColor="White" Font-Underline="false">Register</asp:HyperLink>
+                <asp:LinkButton ID="LinkButton1" runat="server" ForeColor="White" Font-Underline="false" Visible="False" OnClick="LinkButton1_Click">Logout</asp:LinkButton>
             </td>
         </tr>
     </table>

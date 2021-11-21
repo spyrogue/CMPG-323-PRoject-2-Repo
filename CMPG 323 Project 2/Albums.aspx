@@ -123,6 +123,9 @@
         .register{
             width:100px;
         }
+        .auto-style9 {
+            width: 584px;
+        }
         </style>
     <title></title>
 </head>
@@ -132,31 +135,33 @@
         <tr>
             <td class="photoAlbum">Photo Album</td>
             <td class="manageImages">
-                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Images.aspx" ForeColor="White">Manage images</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Images.aspx" ForeColor="White" Font-Underline="false">Manage images</asp:HyperLink>
             </td>
             <td class="manageAlbums">
-                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Albums.aspx" ForeColor="White">Manage albums</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Albums.aspx" ForeColor="White" Font-Underline="false">Manage albums</asp:HyperLink>
             </td>
             <td class="sharedImages">
-                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Shared.aspx" ForeColor="White">Shared images</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Shared.aspx" ForeColor="White" Font-Underline="false">Shared images</asp:HyperLink>
             </td>
             <td class="searchImages">
-                <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/SearchImage.aspx" ForeColor="White">Search images</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/SearchImage.aspx" ForeColor="White" Font-Underline="false">Search images</asp:HyperLink>
             </td>
             <td class="spacer">&nbsp;</td>
             <td class="login">
-                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Login.aspx" ForeColor="White">Login</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Login.aspx" ForeColor="White" Font-Underline="false">Login</asp:HyperLink>
             </td>
             <td class="register">
-                <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Register.aspx" ForeColor="White">Register</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Register.aspx" ForeColor="White" Font-Underline="false">Register</asp:HyperLink>
+                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" ForeColor="White" Font-Underline="false" Visible="False">Logout</asp:LinkButton>
             </td>
         </tr>
     </table>
         <div>
-            Albums<br />
             <br />
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click1" Text="Store user" />
-            <br />
+            <table style="width:100%;">
+                <tr>
+                    <td class="auto-style9">&nbsp;</td>
+                    <td>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Album_Id" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows" AllowSorting="True">
                 <Columns>
                     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
@@ -181,6 +186,12 @@
                     <asp:Parameter Name="Album_Id" Type="Int32" />
                 </UpdateParameters>
             </asp:SqlDataSource>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click1" Text="Store user" />
+            <br />
             <br />
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="images.aspx">view images</asp:HyperLink>
             <br />

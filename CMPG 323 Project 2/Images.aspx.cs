@@ -23,17 +23,29 @@ namespace CMPG_323_Project_2
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-             /*con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30");
-             con.Open();
-             adap = new SqlDataAdapter("select * from Image_Details", con);
-             ds = new DataSet();
-             adap.Fill(ds);
-             con.Close();*/
-            TextBox1.Text = "Brandon";
-            TextBox3.Text = "BB";
-            TextBox4.Text = "#Live";
-            TextBox5.Text = "Pine Slopes";
-            TextBox6.Text = "Jozi";
+            con = new SqlConnection(connectionString);
+            con.Open();
+
+            if (!string.IsNullOrEmpty(Session["LogInUsername"] as string))
+            {
+                HyperLink5.Visible = false;
+                HyperLink6.Visible = false;
+                LinkButton1.Visible = true;
+            }
+            else
+            {
+                Response.Write("<script>alert('Please login to view this content')</script>");
+                TextBox1.Visible = false;
+                TextBox3.Visible = false;
+                TextBox4.Visible = false;
+                TextBox5.Visible = false;
+                TextBox6.Visible = false;
+                DropDownList2.Visible = false;
+                fileupload.Visible = false;
+                GridView1.Visible = false;
+                upload.Visible = false;
+            }
+            con.Close();
 
             com = new SqlCommand();
             com.Connection = con;
@@ -83,7 +95,7 @@ namespace CMPG_323_Project_2
                 GridView1.DataBind();*/
                 if (insertAlbumId != "Album Id")
                 {
-                    Label1.Text = "Please select a album that exists or create an album with the selected index";
+
                 }
                 Response.Redirect("Images.aspx");
 
@@ -306,28 +318,10 @@ namespace CMPG_323_Project_2
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            
-            /*LinkButton linkdownload = sender as LinkButton;
-            GridView gridrow = linkdownload.NamingContainer as GridView;
-            string downloadFile = GridView1.DataKeys[gridrow.RowIndex].Value.ToString();
-            Response.ContentType = "Image/jpg";
-            Response.AddHeader("ContentDisposition", "attachment;filename=\"" + downloadFile + "\"");
-            Response.TransmitFile(Server.MapPath(downloadFile));
-            Response.End();*/
-
-            //Response.Write("<script>alert('" + downloadFile + "')</script>");
-
-            /*Response.Clear();
-            Response.ContentType = "Image/.png";
-            Response.AppendHeader("Content-Disposition", "attachment;filename=/");*/
-            //Response.TransmitFile("/Images/"+ds+".png");
-            //Response.End();
-
-            /*Response.Clear();
-            Response.ContentType = "application/octet-stream";
-            Response.AppendHeader("Content-Disposition", "filename=");
-            Response.TransmitFile(@"~\Images\"+ shared + "Shared.png");
-            Response.End();*/
+            Session["LogInEmail"] = null;
+            Session["LogInUsername"] = null;
+            Session["LogInPassword"] = null;
+            Response.Redirect("Login.aspx");
         }
     }
 }

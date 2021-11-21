@@ -20,8 +20,28 @@ namespace CMPG_323_Project_2
         {
             con = new SqlConnection(connectionString);
             con.Open();
+
+            if (!string.IsNullOrEmpty(Session["LogInUsername"] as string))
+            {
+                HyperLink5.Visible = false;
+                HyperLink6.Visible = false;
+                LinkButton1.Visible = true;
+            }
+            else
+            {
+                Response.Write("<script>alert('Please login to view this content')</script>");
+                TextBox1.Visible = false;
+                TextBox2.Visible = false;
+                GridView1.Visible = false;
+                Label1.Visible = false;
+                HyperLink1.Visible = false;
+                Button1.Visible = false;
+                Button2.Visible = false;
+            }
             con.Close();
-            Label1.Text = "success";
+
+            com = new SqlCommand();
+            com.Connection = con;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -42,6 +62,11 @@ namespace CMPG_323_Project_2
         }
 
         protected void Button2_Click1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
         {
 
         }

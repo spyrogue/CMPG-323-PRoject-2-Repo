@@ -23,6 +23,22 @@ namespace CMPG_323_Project_2
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            con = new SqlConnection(connectionString);
+            con.Open();
+
+            if (!string.IsNullOrEmpty(Session["LogInUsername"] as string))
+            {
+                HyperLink5.Visible = false;
+                HyperLink6.Visible = false;
+                LinkButton1.Visible = true;
+            }
+            else
+            {
+                Response.Write("<script>alert('Please login to view this content')</script>");
+                GridView1.Visible = false;
+            }
+            con.Close();
+
             com = new SqlCommand();
             com.Connection = con;
         }
@@ -45,6 +61,14 @@ namespace CMPG_323_Project_2
             Response.AppendHeader("Content-Disposition", "filename=" + shared);
             Response.TransmitFile(Server.MapPath(shared));
             Response.End();
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["LogInEmail"] = null;
+            Session["LogInUsername"] = null;
+            Session["LogInPassword"] = null;
+            Response.Redirect("Login.aspx");
         }
     }
 }

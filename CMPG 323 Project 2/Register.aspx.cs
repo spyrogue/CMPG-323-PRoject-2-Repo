@@ -13,7 +13,7 @@ namespace CMPG_323_Project_2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            LinkButton1.Visible = false;
         }
 
         string construct = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30";
@@ -55,6 +55,14 @@ namespace CMPG_323_Project_2
                 connect.Close();
                 Response.Redirect("Login.aspx");
             }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session["LogInEmail"] = null;
+            Session["LogInUsername"] = null;
+            Session["LogInPassword"] = null;
+            Response.Redirect("Login.aspx");
         }
     }
 }
