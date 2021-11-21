@@ -13,7 +13,9 @@ namespace CMPG_323_Project_2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            EmailTextBox.Text = "brandon@gmail.com";
+            UsernameTextBox.Text = "Brandon";
+            PasswordTextBox.Text = "123";
         }
 
         //string construct = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Users.mdf;Integrated Security=True";
@@ -50,7 +52,7 @@ namespace CMPG_323_Project_2
                 Session["LogInEmail"] = EmailTextBox.Text;
                 Session["LogInUsername"] = UsernameTextBox.Text;
                 Session["LogInPassword"] = PasswordTextBox.Text;
-                Response.Redirect("Display_Image.aspx");
+                Response.Redirect("SearchImage.aspx");
             }
             else
             {

@@ -71,22 +71,25 @@
     <form id="form1" runat="server">
     <table class="auto-style8">
         <tr>
-            <td class="auto-style2">Photo Album</td>
-            <td class="auto-style7">
-                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Images.aspx" ForeColor="White">Manage images</asp:HyperLink>
+            <td class="photoAlbum">Photo Album</td>
+            <td class="manageImages">
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Images.aspx" ForeColor="White">Manage images</asp:HyperLink>
             </td>
-            <td class="auto-style1">
-                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Albums.aspx" ForeColor="White">Manage albums</asp:HyperLink>
+            <td class="manageAlbums">
+                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Albums.aspx" ForeColor="White">Manage albums</asp:HyperLink>
             </td>
-            <td class="auto-style4">
-                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Shared.aspx" ForeColor="White">Shared images</asp:HyperLink>
+            <td class="sharedImages">
+                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Shared.aspx" ForeColor="White">Shared images</asp:HyperLink>
             </td>
-            <td class="auto-style5">&nbsp;</td>
+            <td class="searchImages">
+                <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/SearchImage.aspx" ForeColor="White">Search images</asp:HyperLink>
+            </td>
+            <td class="spacer">&nbsp;</td>
             <td class="login">
-                <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Login.aspx" ForeColor="White">Login</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Login.aspx" ForeColor="White">Login</asp:HyperLink>
             </td>
             <td class="register">
-                <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Register.aspx" ForeColor="White">Register</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Register.aspx" ForeColor="White">Register</asp:HyperLink>
             </td>
         </tr>
     </table>

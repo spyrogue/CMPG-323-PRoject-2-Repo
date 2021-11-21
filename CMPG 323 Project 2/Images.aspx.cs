@@ -135,13 +135,29 @@ namespace CMPG_323_Project_2
 
         protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
         {
-            string shared = (GridView1.SelectedRow.Cells[10]).Text;
+            /*string shared = (GridView1.SelectedRow.Cells[10]).Text;
             Response.Clear();
             Response.ContentType = "application/octet-stream";
             Response.AppendHeader("Content-Disposition", "filename=" + shared);
             Response.TransmitFile(Server.MapPath(shared));
-            Response.End();
+            Response.End();*/
 
+            int i = Convert.ToInt32(GridView1.SelectedIndex);
+            String ImageName = GridView1.SelectedRow.Cells[3].Text;
+            String CapturedBy = GridView1.SelectedRow.Cells[5].Text;
+            String Tags = GridView1.SelectedRow.Cells[6].Text;
+            String Location = GridView1.SelectedRow.Cells[7].Text;
+            String SharedFrom = GridView1.SelectedRow.Cells[8].Text;
+            String Image = GridView1.SelectedRow.Cells[10].Text;
+            String ImagePath = GridView1.SelectedRow.Cells[10].Text;
+            Response.Write("<script>alert('" + User + "')</script>");
+            con = new SqlConnection(connectionString);
+            con.Open();
+            string sql = "INSERT INTO Shared VALUES('" + ImageName + "','" + CapturedBy + "','" + Location + "','" + Tags + "','" + SharedFrom + "','" + Image + "','" + ImagePath + "')";
+            com = new SqlCommand(sql, con);
+            com.ExecuteNonQuery();
+            con.Close();
+            Response.Write("<script>alert('Image shared successfully')</script>");
 
         }
 

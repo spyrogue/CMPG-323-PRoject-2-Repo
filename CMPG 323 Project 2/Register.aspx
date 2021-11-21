@@ -26,7 +26,10 @@
             width: 822px;
         }
         .auto-style5 {
-            width: 410px;
+            text-align: center;
+            font-size: 4.2rem;
+            font-weight: 100;
+            color:darkblue;
         }
         .auto-style6 {
             width: 816px;
@@ -50,31 +53,97 @@
             background-color:midnightblue;
             color:white;
             font-size:xx-large;
-            font-family:sans-serif
+            font-family:sans-serif;
+            width:1900px;
+        }
+
+        .textboxStyle{
+            height:30px;
+            width:250px;
+            border-radius:20px;
+            border-width:4px;
+            text-align:center;
+            border-color:white;
+            border-style:solid;
+        }
+
+        .textboxStyle:hover{
+            border-color:forestgreen;
+            border-radius:20px;
+            border-width:4px;
+            height:40px;
+            width:300px;
+        }
+
+        .registerBtnstyle{
+            height:30px;
+            width:150px;
+            border-radius:20px;
+            border-width:4px;
+            text-align:center;
+            border-color:cornflowerblue;
+            border-style:solid;
+        }
+
+        .registerBtnstyle:hover{
+            border-radius:20px;
+            border-width:4px;
+            height:40px;
+            width:160px;
+        }
+
+
+        body{
+            background-color:powderblue;
+            font-size:large;
+            font-family:sans-serif;
+        }
+
+        .photoAlbum{
+            width:180px;
+        }
+        .manageImages{
+            width:180px;
+        }
+        .manageAlbums{
+            width:180px;
+        }
+        .sharedImages{
+            width:180px;
+        }
+        .searchImages{
+            width:180px;
+        }
+        .spacer{
+            width:300px;
+        }
+        .login{
+            width:100px;
+        }
+        .register{
+            width:100px;
         }
     </style>
     
 </head>
 <body>
-    <style>
-        form{
-            background-color:white;
-        }
-    </style>
     <form id="form1" runat="server">
         <table class="auto-style8">
         <tr>
-            <td class="auto-style2">Photo Album</td>
-            <td class="auto-style7">
+            <td class="photoAlbum">PhotoAlbum</td>
+            <td class="manageImages">
                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Images.aspx" ForeColor="White">Manage images</asp:HyperLink>
             </td>
-            <td class="auto-style1">
+            <td class="manageAlbums">
                 <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Albums.aspx" ForeColor="White">Manage albums</asp:HyperLink>
             </td>
-            <td class="auto-style4">
+            <td class="sharedImages">
                 <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Shared.aspx" ForeColor="White">Shared images</asp:HyperLink>
             </td>
-            <td class="auto-style5">&nbsp;</td>
+            <td class="searchImages">
+                <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/SearchImage.aspx" ForeColor="White">Search images</asp:HyperLink>
+            </td>
+            <td class="spacer">&nbsp;</td>
             <td class="login">
                 <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Login.aspx" ForeColor="White">Login</asp:HyperLink>
             </td>
@@ -83,35 +152,47 @@
             </td>
         </tr>
     </table>
-        <section>
-    </section>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
     <div class="sec2">
         <div class="container">
             <div class="auto-style1">
-                <h2 class="auto-style1">Register</h2>
                 <div class="auto-style1">
                     <br />
                     <table class="auto-style2">
                         <tr>
                             <td class="auto-style6">&nbsp;</td>
                             <td class="auto-style5">
-                <asp:TextBox ID="EmailTBox" placeholder="Email Address" runat="server" Width="200px"></asp:TextBox></td>
+                                Register</td>
+                            <td class="auto-style3">
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td class="auto-style6">&nbsp;</td>
+                            <td class="auto-style6">
+                <asp:TextBox ID="EmailTBox" placeholder="Email Address" runat="server" CssClass="textboxStyle"></asp:TextBox></td>
                             <td class="auto-style3">
                     <asp:RegularExpressionValidator ID="EmailValid" runat="server" ControlToValidate="EmailTBox" ErrorMessage="Please enter your email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                             </td>
                         </tr>
                         <tr>
                             <td class="auto-style6">&nbsp;</td>
-                            <td class="auto-style5">
-                <asp:TextBox ID="UsernameTBox" placeholder="Username" runat="server" Width="200px"></asp:TextBox></td>
+                            <td class="auto-style6">
+                <asp:TextBox ID="UsernameTBox" placeholder="Username" runat="server" CssClass="textboxStyle"></asp:TextBox></td>
                             <td class="auto-style3">
                         <asp:RequiredFieldValidator ID="UsernameValid" runat="server" ControlToValidate="UsernameTBox" ErrorMessage="Please enter your username" ForeColor="Black"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
                         <tr>
-                            <td class="auto-style6">&nbsp;</td>
-                            <td class="auto-style5">
-                <asp:TextBox ID="PasswordTBox" placeholder="Password" runat="server" Width="200px"></asp:TextBox></td>
+                            <td class="auto-style6"></td>
+                            <td class="auto-style6">
+                <asp:TextBox ID="PasswordTBox" placeholder="Password" runat="server"  TextMode="Password" CssClass="textboxStyle"></asp:TextBox></td>
                             <td class="auto-style3">
                         <asp:RequiredFieldValidator ID="PasswordValid" runat="server" ControlToValidate="PasswordTBox" ErrorMessage="Invalid password" ForeColor="Black"></asp:RequiredFieldValidator>
                                 <br />
@@ -119,8 +200,8 @@
                         </tr>
                         <tr>
                             <td class="auto-style6">&nbsp;</td>
-                            <td class="auto-style5">
-                <asp:TextBox ID="PasswordConfTbox" placeholder="Confirm Password" runat="server" Width="200px"></asp:TextBox>
+                            <td class="auto-style6">
+                <asp:TextBox ID="PasswordConfTbox" placeholder="Confirm Password" runat="server" TextMode="Password" CssClass="textboxStyle"></asp:TextBox>
                             </td>
                             <td class="auto-style3">
                         <asp:RequiredFieldValidator ID="PasswordConfValid" runat="server" ControlToValidate="PasswordConfTbox" ErrorMessage="Invalid password" ForeColor="Black"></asp:RequiredFieldValidator>
@@ -135,11 +216,9 @@
                         <tr>
                             <td class="auto-style10">&nbsp;</td>
                             <td class="auto-style9">
-                <asp:Button ID="Submit" runat="server" Text="Register" OnClick="Submit_Click2" Width="97px" />
+                <asp:Button ID="Submit" runat="server" Text="Register" OnClick="Submit_Click2" CssClass="registerBtnstyle"/>
                                 </td>
-                            <td class="auto-style7">Have an account?
-                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Login.aspx">Login</asp:HyperLink>
-                &nbsp;&nbsp;</td>
+                            <td class="auto-style7">&nbsp;</td>
                         </tr>
                     </table>
                 </div>

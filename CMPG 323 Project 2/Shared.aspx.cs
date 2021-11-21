@@ -29,37 +29,22 @@ namespace CMPG_323_Project_2
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int i = Convert.ToInt32(GridView1.SelectedIndex);
-            string shared = GridView1.SelectedRow.Cells[7].Text;
-            /*String name = GridView1.SelectedRow.Cells[2].Text;
-            String capturedBy = GridView1.SelectedRow.Cells[4].Text;
-            String Location = GridView1.SelectedRow.Cells[5].Text;
-            String tags = GridView1.SelectedRow.Cells[6].Text;
-            String User = GridView1.SelectedRow.Cells[7].Text;*/
+            /*string shared = (GridView1.SelectedRow.Cells[8]).Text;
+            Response.Clear();
+            Response.ContentType = "application/octet-stream";
+            Response.AppendHeader("Content-Disposition", "filename=" + shared);
+            Response.TransmitFile(Server.MapPath(shared));
+            Response.End();*/
+        }
 
-            switch (i){
-                case 0:
-                    Response.Write("<script>alert('" + ("1") + "')</script>");
-                    break;
-                case 1:
-                    Response.Write("<script>alert('" + ("2") + "')</script>");
-                    break;
-                case 2:
-                    Response.Write("<script>alert('" + ("3") + "')</script>");
-                    break;
-                case 3:
-                    Response.Write("<script>alert('" + ("4") + "')</script>");
-                    break;
-                case 4:
-                    Response.Write("<script>alert('" + ("5") + "')</script>");
-                    break;
-                case 5:
-                    Response.Write("<script>alert('" + ("6") + "')</script>");
-                    break;
-            }
-
-
-            //Response.Write("<script>alert('" + shared + "')</script>");
+        protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
+        {
+            string shared = (GridView1.SelectedRow.Cells[8]).Text;
+            Response.Clear();
+            Response.ContentType = "application/octet-stream";
+            Response.AppendHeader("Content-Disposition", "filename=" + shared);
+            Response.TransmitFile(Server.MapPath(shared));
+            Response.End();
         }
     }
 }

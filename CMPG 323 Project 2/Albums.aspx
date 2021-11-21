@@ -5,12 +5,123 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <style type="text/css">
+
+        .mydatagrid
+        {
+        width: 50%;
+        border: solid 2px black;
+        }
+        .header
+        {
+        background-color: #646464;
+        font-family: Arial;
+        color: White;
+        border: none 0px transparent;
+        height: 10px;
+        text-align: center;
+        font-size: 16px;
+        }
+
+        .rows
+        {
+        background-color: #fff;
+        color: #000;
+        text-align: left;
+        border: none 1px transparent;
+        font-size: 30px;
+        font-family:sans-serif;
+        }
+        .rows:hover
+        {
+        background-color: #00d7ed;
+        color: #fff;
+        text-align: left;
+        font-size: 40px;
+        font-family:sans-serif;
+        }
+        .selectedrow
+        {
+        background-color: #ff8000;
+        font-family: Arial;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        }
+        .mydatagrid a /** FOR THE PAGING ICONS **/
+        {
+        background-color: Transparent;
+        padding: 5px 5px 5px 5px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        }
+
+        .mydatagrid a:hover /** FOR THE PAGING ICONS HOVER STYLES**/
+        {
+        background-color: #000;
+        color: #fff;
+        }
+        .mydatagrid span /** FOR THE PAGING ICONS CURRENT PAGE INDICATOR **/
+        {
+        background-color: #c9c9c9;
+        color: #000;
+        padding: 5px 5px 5px 5px;
+        }
+        .pager
+        {
+        background-color: #646464;
+        font-family: Arial;
+        color: White;
+        height: 30px;
+        text-align: left;
+        }
+
+        .mydatagrid td
+        {
+        padding: 5px;
+        }
+        .mydatagrid th
+        {
+        padding: 5px;
+        }
+
+
         .auto-style8
         {
             background-color:midnightblue;
             color:white;
             font-size:xx-large;
-            font-family:sans-serif
+            font-family:sans-serif;
+            width:1900px;
+        }
+
+        body{
+            background-color:powderblue;
+        }
+
+        .photoAlbum{
+            width:180px;
+        }
+        .manageImages{
+            width:180px;
+        }
+        .manageAlbums{
+            width:180px;
+        }
+        .sharedImages{
+            width:180px;
+        }
+        .searchImages{
+            width:180px;
+        }
+        .spacer{
+            width:300px;
+        }
+        .login{
+            width:100px;
+        }
+        .register{
+            width:100px;
         }
         </style>
     <title></title>
@@ -19,17 +130,20 @@
     <form id="form1" runat="server">
         <table class="auto-style8">
         <tr>
-            <td class="auto-style2">Photo Album</td>
-            <td class="auto-style7">
+            <td class="photoAlbum">Photo Album</td>
+            <td class="manageImages">
                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Images.aspx" ForeColor="White">Manage images</asp:HyperLink>
             </td>
-            <td class="auto-style1">
+            <td class="manageAlbums">
                 <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Albums.aspx" ForeColor="White">Manage albums</asp:HyperLink>
             </td>
-            <td class="auto-style4">
+            <td class="sharedImages">
                 <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Shared.aspx" ForeColor="White">Shared images</asp:HyperLink>
             </td>
-            <td class="auto-style5">&nbsp;</td>
+            <td class="searchImages">
+                <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/SearchImage.aspx" ForeColor="White">Search images</asp:HyperLink>
+            </td>
+            <td class="spacer">&nbsp;</td>
             <td class="login">
                 <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Login.aspx" ForeColor="White">Login</asp:HyperLink>
             </td>
@@ -43,13 +157,15 @@
             <br />
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click1" Text="Store user" />
             <br />
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Album_Id" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display.">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Album_Id" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows" AllowSorting="True">
                 <Columns>
                     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                     <asp:BoundField DataField="Album_Id" HeaderText="Album_Id" SortExpression="Album_Id" />
                     <asp:BoundField DataField="Album_Name" HeaderText="Album_Name" SortExpression="Album_Name" />
                     <asp:BoundField DataField="User" HeaderText="User" SortExpression="User" />
                 </Columns>
+                <HeaderStyle CssClass="header" />
+                <RowStyle CssClass="rows" />
             </asp:GridView>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ImageUserConnectionString1 %>" DeleteCommand="DELETE FROM [Albums] WHERE [Album Id] = @Album_Id" InsertCommand="INSERT INTO [Albums] ([Album Name], [User]) VALUES (@Album_Name, @User)" SelectCommand="SELECT [Album Id] AS Album_Id, [Album Name] AS Album_Name, [User] FROM [Albums]" UpdateCommand="UPDATE [Albums] SET [Album Name] = @Album_Name, [User] = @User WHERE [Album Id] = @Album_Id">
                 <DeleteParameters>

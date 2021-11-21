@@ -68,11 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Albums.aspx" />
-    <Content Include="Display_Image.aspx" />
     <Content Include="Images.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="SearchImage.aspx" />
     <Content Include="Shared.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -83,13 +83,6 @@
     </Compile>
     <Compile Include="Albums.aspx.designer.cs">
       <DependentUpon>Albums.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Display_Image.aspx.cs">
-      <DependentUpon>Display_Image.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Display_Image.aspx.designer.cs">
-      <DependentUpon>Display_Image.aspx</DependentUpon>
     </Compile>
     <Compile Include="Images.aspx.cs">
       <DependentUpon>Images.aspx</DependentUpon>
@@ -119,6 +112,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchImage.aspx.cs">
+      <DependentUpon>SearchImage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchImage.aspx.designer.cs">
+      <DependentUpon>SearchImage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Shared.aspx.cs">
       <DependentUpon>Shared.aspx</DependentUpon>
