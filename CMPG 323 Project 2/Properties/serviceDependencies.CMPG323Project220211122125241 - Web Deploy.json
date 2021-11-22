@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/cmpg323project2dbserver/databases/CMPG 323 Project 2_db",
+      "type": "mssql.azure",
+      "connectionId": "ImageGalleryConnectionString",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

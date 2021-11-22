@@ -220,7 +220,7 @@
                     <td>
                         <asp:GridView ID="GridView1" runat="server" CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows">
                             <Columns>
-                                <asp:ImageField DataImageUrlField="Image" HeaderText="Image" SortExpression="Image" ControlStyle-Height="200" ControlStyle-Width="200">
+                                <asp:ImageField DataImageUrlField="Image" HeaderText="Image" ControlStyle-Height="200" ControlStyle-Width="200">
                                 </asp:ImageField>
                             </Columns>
                         </asp:GridView>

@@ -149,21 +149,18 @@ namespace CMPG_323_Project_2
             Response.AppendHeader("Content-Disposition", "filename=" + shared);
             Response.TransmitFile(Server.MapPath(shared));
             Response.End();*/
-
-            
-
         }
 
         protected void ShareBtn_Click(object sender, EventArgs e)
         {
-            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30");
+            /*con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30");
             con.Open();
             tran = con.BeginTransaction();
             com.Transaction = tran;
             string slno = null;
             try
             {
-                /*foreach (GridViewRow g1 in GridView1.Rows)
+                foreach (GridViewRow g1 in GridView1.Rows)
                 {
                     string imageName = (g1.FindControl("TextBox1") as TextBox).Text;
                     string albumId = (g1.FindControl("TextBox2") as TextBox).Text;
@@ -172,13 +169,13 @@ namespace CMPG_323_Project_2
                     string location = (g1.FindControl("TextBox5") as TextBox).Text;
                     string user = (g1.FindControl("TextBox6") as TextBox).Text;
                     string image = (g1.FindControl("TextBox7") as TextBox).Text;
-                    string query = "insert into Shared values(" + imageName + ",'" + albumId + "'," + capturedBy + ",'" + tags + "',"+location+"',"+user+"',"+image+")";
+                    string query = "insert into Shared values(" + imageName + ",'" + albumId + "'," + capturedBy + ",'" + tags + "'," + location + "'," + user + "'," + image + ")";
                     //cmd.CommandText = "insert into Members values ('" + g1.Cells[0].Text + "','" + g1.Cells[1].Text + "','" + g1.Cells[2].Text + "','" + g1.Cells[3].Text + "')";  
                     //slno = id;
                     com.CommandText = query;
                     com.ExecuteNonQuery();
                 }
-                tran.Commit();*/
+                tran.Commit();
 
             }
             catch(Exception ex)
@@ -190,7 +187,7 @@ namespace CMPG_323_Project_2
                 con.Close();
             }
 
-            /*con = new SqlConnection(connectionString);
+            con = new SqlConnection(connectionString);
             con.Open();
             ds = new DataSet();
             adap = new SqlDataAdapter();
@@ -249,8 +246,8 @@ namespace CMPG_323_Project_2
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
 
-            string _Name = ((ImageButton)sender).CommandArgument;
-            DownloadFile(_Name);
+            /*string _Name = ((ImageButton)sender).CommandArgument;
+            DownloadFile(_Name);*/
             /*con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30");
             con.Open();
             tran = con.BeginTransaction();

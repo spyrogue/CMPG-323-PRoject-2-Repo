@@ -51,10 +51,11 @@ namespace CMPG_323_Project_2
         protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
         {
             string shared = (GridView1.SelectedRow.Cells[8]).Text;
+            Response.Write("<script>alert('"+shared+"')</script>");
             Response.Clear();
             Response.ContentType = "application/octet-stream";
             Response.AppendHeader("Content-Disposition", "filename=" + shared);
-            Response.TransmitFile(Server.MapPath(shared));
+            Response.TransmitFile(Server.MapPath("Images/" + shared));
             Response.End();
         }
 
