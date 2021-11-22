@@ -184,10 +184,10 @@
                                 &nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="auto-style6">&nbsp;</td>
-                            <td class="auto-style6">
+                            <td class="auto-style11"></td>
+                            <td class="auto-style11">
                 <asp:TextBox ID="EmailTBox" placeholder="Email Address" runat="server" CssClass="textboxStyle"></asp:TextBox></td>
-                            <td class="auto-style3">
+                            <td class="auto-style12">
                     <asp:RegularExpressionValidator ID="EmailValid" runat="server" ControlToValidate="EmailTBox" ErrorMessage="Please enter your email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ForeColor="Red"></asp:RegularExpressionValidator>
                             </td>
                         </tr>
@@ -220,8 +220,7 @@
                         </tr>
                         <tr>
                             <td class="auto-style10">
-                                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
-                            </td>
+                                &nbsp;</td>
                             <td class="auto-style9">
                                 &nbsp;</td>
                             <td class="auto-style7">&nbsp;</td>

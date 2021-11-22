@@ -34,7 +34,7 @@ namespace CMPG_323_Project_2
             }
             else
             {
-                Response.Write("<script>alert('Please login to view this content')</script>");
+                Response.Write("<script>alert('Access Required')</script>");
                 GridView1.Visible = false;
             }
             con.Close();
@@ -45,12 +45,7 @@ namespace CMPG_323_Project_2
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*string shared = (GridView1.SelectedRow.Cells[8]).Text;
-            Response.Clear();
-            Response.ContentType = "application/octet-stream";
-            Response.AppendHeader("Content-Disposition", "filename=" + shared);
-            Response.TransmitFile(Server.MapPath(shared));
-            Response.End();*/
+
         }
 
         protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)

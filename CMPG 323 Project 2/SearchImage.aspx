@@ -5,6 +5,89 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <style>
+
+        .mydatagrid
+        {
+        width: 50%;
+        border: solid 2px black;
+        }
+        .header
+        {
+        background-color: #646464;
+        font-family: Arial;
+        color: White;
+        border: none 0px transparent;
+        height: 10px;
+        text-align: center;
+        font-size: 16px;
+        }
+
+        .rows
+        {
+        background-color: #fff;
+        font-size: 20px;
+        color: #000;
+        text-align: left;
+        border: none 1px transparent;
+        font-size: 30px;
+        font-family:sans-serif;
+        }
+        .rows:hover
+        {
+        background-color: #00d7ed;
+        color: #fff;
+        text-align: left;
+        font-size: 40px;
+        font-family:sans-serif;
+        }
+        .selectedrow
+        {
+        background-color: #ff8000;
+        font-family: Arial;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        }
+        .mydatagrid a /** FOR THE PAGING ICONS **/
+        {
+        background-color: Transparent;
+        padding: 5px 5px 5px 5px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        }
+
+        .mydatagrid a:hover /** FOR THE PAGING ICONS HOVER STYLES**/
+        {
+        background-color: #000;
+        color: #fff;
+        }
+        .mydatagrid span /** FOR THE PAGING ICONS CURRENT PAGE INDICATOR **/
+        {
+        background-color: #c9c9c9;
+        color: #000;
+        padding: 5px 5px 5px 5px;
+        }
+        .pager
+        {
+        background-color: #646464;
+        font-family: Arial;
+        color: White;
+        height: 30px;
+        text-align: left;
+        }
+
+        .mydatagrid td
+        {
+        padding: 5px;
+        }
+        .mydatagrid th
+        {
+        padding: 5px;
+        }
+
+
+
         body{
             background-color:powderblue;
         }
@@ -94,7 +177,11 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:GridView ID="GridView1" runat="server">
+                        <asp:GridView ID="GridView1" runat="server" CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows">
+                            <Columns>
+                                <asp:ImageField>
+                                </asp:ImageField>
+                            </Columns>
                         </asp:GridView>
                     </td>
                     <td>&nbsp;</td>

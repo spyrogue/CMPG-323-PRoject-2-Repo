@@ -42,11 +42,12 @@ namespace CMPG_323_Project_2
             }
             else
             {
-                Response.Write("<script>alert('Please login to view this content')</script>");
+                Response.Write("<script>alert('Access Required')</script>");
                 Label1.Visible = false;
                 TextBox1.Visible = false;
                 Button1.Visible = false;
                 GridView1.Visible = false;
+                LinkButton1.Visible = false;
             }
             con.Close();
         }
@@ -56,8 +57,8 @@ namespace CMPG_323_Project_2
             con = new SqlConnection(connectionString);
             con.Open();
             string search_value = TextBox1.Text;
-            string sql = "SELECT * FROM Image_Details WHERE [ImageName] LIKE '%" + search_value + "'" +
-                "OR  [Captured By] LIKE '%" + search_value + "%' OR [User] LIKE '%" + search_value + "%'";
+            string sql = "SELECT * FROM Image_Details VALUES(@image) WHERE [ImageName] LIKE '%" + search_value + "'" +
+                "OR  [Captured By] LIKE '%" + search_value + "%' OR [User] LIKE '%" + search_value + "%' AND WHERE Image ";
             ds = new DataSet();
             adap = new SqlDataAdapter();
             com = new SqlCommand(sql, con);

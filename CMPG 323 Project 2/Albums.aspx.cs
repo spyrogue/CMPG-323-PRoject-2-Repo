@@ -26,17 +26,15 @@ namespace CMPG_323_Project_2
                 HyperLink5.Visible = false;
                 HyperLink6.Visible = false;
                 LinkButton1.Visible = true;
+                TextBox2.Text = Session["LogInUsername"].ToString();
             }
             else
             {
-                Response.Write("<script>alert('Please login to view this content')</script>");
+                Response.Write("<script>alert('Access Required')</script>");
                 TextBox1.Visible = false;
                 TextBox2.Visible = false;
                 GridView1.Visible = false;
-                Label1.Visible = false;
-                HyperLink1.Visible = false;
                 Button1.Visible = false;
-                Button2.Visible = false;
             }
             con.Close();
 

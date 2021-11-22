@@ -8,7 +8,7 @@
     <style type="text/css">
 
         .auto-style3 {
-            margin-right: 0px;
+            text-align:center;
         }
         .auto-style3 {
             margin-right: 0px;
@@ -106,9 +106,24 @@
             font-family:sans-serif;
             width:1900px;
         }
-        .auto-style9 {
-            margin-bottom: 0px;
+
+        .auto-style9{
+            height:30px;
+            width:150px;
+            border-radius:20px;
+            border-width:4px;
+            text-align:center;
+            border-color:cornflowerblue;
+            border-style:solid;
         }
+
+        .auto-style9:hover{
+            border-radius:20px;
+            border-width:4px;
+            height:40px;
+            width:160px;
+        }
+
         .auto-style10 {
             width: 921px;
         }
@@ -145,6 +160,45 @@
         .style-imagePath{
             display:none;
         }
+
+        .textboxStyle{
+            height:30px;
+            width:250px;
+            border-radius:20px;
+            border-width:4px;
+            text-align:center;
+            border-color:white;
+            border-style:solid;
+        }
+
+        .textboxStyle:hover{
+            border-color:forestgreen;
+            border-radius:20px;
+            border-width:4px;
+            height:40px;
+            width:300px;
+        }
+
+        .dropdown
+        {
+            height:30px;
+            width:70px;
+            border-radius:20px;
+            border-width:4px;
+            text-align:center;
+            border-color:white;
+            border-style:solid;
+        }
+
+        .lbl
+        {
+            font-size:large;
+            font-family:sans-serif;
+        }
+
+        .auto-style12 {
+            height: 47px;
+        }
         </style>
 </head>
 <body style="height: 246px">
@@ -178,30 +232,7 @@
         <br />
         <table style="width:100%;">
             <tr>
-                <td class="auto-style10">&nbsp;</td>
-                <td>
-        <asp:TextBox ID="TextBox1" placeholder="Image Name" runat="server" OnTextChanged="TextBox1_TextChanged" Width="200px"></asp:TextBox>
-                    <br />
-        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="Album Id" DataValueField="Album Id">
-        </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ImageUserConnectionString1 %>" SelectCommand="SELECT * FROM [Albums]"></asp:SqlDataSource>
-        <asp:TextBox ID="TextBox3" placeholder="Captured B" runat="server" Width="200px"></asp:TextBox>
-                    <br />
-        <asp:TextBox ID="TextBox4" placeholder="Tags" runat="server" Width="200px"></asp:TextBox>
-                    <br />
-        <asp:TextBox ID="TextBox5" placeholder="Location" runat="server" Width="200px"></asp:TextBox>
-                    <br />
-        <asp:TextBox ID="TextBox6" placeholder="User" runat="server" Width="200px"></asp:TextBox>
-                    <br />
-    <asp:FileUpload ID="fileupload" runat="server" CssClass="auto-style3" />  
-                    <br />
-        <asp:Button ID="upload" runat="server" Font-Bold="true" Text="Upload" OnClick="upload_Click" CssClass="auto-style9" />  
-                    <br />
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style10">
+                <td class="auto-style10" rowspan="2">
                     <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ImageId" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows">
                         <Columns>
                             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
@@ -243,16 +274,41 @@
                         </UpdateParameters>
                     </asp:SqlDataSource>
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style12">
+        <asp:TextBox ID="TextBox1" placeholder="Image Name" runat="server" OnTextChanged="TextBox1_TextChanged" CssClass="textboxStyle"></asp:TextBox>
+                    <br />
+                    <br />
+                    <asp:Label ID="Label1" runat="server" Text="Album ID" CssClass="lbl"></asp:Label>
+        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="Album Id" DataValueField="Album Id" CssClass="dropdown">
+        </asp:DropDownList>
+                    <br />
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ImageUserConnectionString1 %>" SelectCommand="SELECT * FROM [Albums]"></asp:SqlDataSource>
+                    <br />
+        <asp:TextBox ID="TextBox3" placeholder="Captured By" runat="server" CssClass="textboxStyle"></asp:TextBox>
+                    <br />
+                    <br />
+        <asp:TextBox ID="TextBox4" placeholder="Tags" runat="server" CssClass="textboxStyle"></asp:TextBox>
+                    <br />
+                    <br />
+        <asp:TextBox ID="TextBox5" placeholder="Location" runat="server" CssClass="textboxStyle"></asp:TextBox>
+                    <br />
+                    <br />
+        <asp:TextBox ID="TextBox6" placeholder="User" runat="server" CssClass="textboxStyle"></asp:TextBox>
+                    <br />
+                    <br />
+    <asp:FileUpload ID="fileupload" runat="server" CssClass="auto-style3" />  
+                    <br />
+                    <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="upload" runat="server" Font-Bold="true" Text="Upload" OnClick="upload_Click" CssClass="auto-style9" />  
+                    <br />
+                </td>
             </tr>
             <tr>
-                <td class="auto-style10">&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td>
+                    &nbsp;</td>
             </tr>
-        </table>
-                <br />
+            </table>
     </form>
 </body>
 </html>

@@ -95,6 +95,11 @@
             width:1900px;
         }
 
+        .auto-style9{
+            text-align: center;
+            width: 642px;
+        }
+
         body{
             background-color:powderblue;
         }
@@ -125,6 +130,46 @@
         }
         .auto-style9 {
             width: 584px;
+        }
+
+        .textboxStyle{
+            height:30px;
+            width:250px;
+            border-radius:20px;
+            border-width:4px;
+            text-align:center;
+            border-color:white;
+            border-style:solid;
+        }
+
+        .textboxStyle:hover{
+            border-color:forestgreen;
+            border-radius:20px;
+            border-width:4px;
+            height:40px;
+            width:300px;
+        }
+
+        .insertBtnstyle{
+            height:30px;
+            width:150px;
+            border-radius:20px;
+            border-width:4px;
+            text-align:center;
+            border-color:cornflowerblue;
+            border-style:solid;
+        }
+
+        .insertBtnstyle:hover{
+            border-radius:20px;
+            border-width:4px;
+            height:40px;
+            width:160px;
+        }
+
+        .auto-style11 {
+            text-align: center;
+            width: 586px;
         }
         </style>
     <title></title>
@@ -161,7 +206,7 @@
             <table style="width:100%;">
                 <tr>
                     <td class="auto-style9">&nbsp;</td>
-                    <td>
+                    <td colspan="2">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Album_Id" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows" AllowSorting="True">
                 <Columns>
                     <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
@@ -189,20 +234,31 @@
                     </td>
                     <td>&nbsp;</td>
                 </tr>
+                <tr>
+                    <td class="auto-style9">&nbsp;</td>
+                    <td class="auto-style11">
+                        <asp:TextBox ID="TextBox1" runat="server" CssClass="textboxStyle" placeholder="Album Name"></asp:TextBox>
+                        <br />
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style9">&nbsp;</td>
+                    <td class="auto-style11">
+                        <asp:TextBox ID="TextBox2" runat="server" CssClass="textboxStyle" placeholder="User"></asp:TextBox>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="auto-style9">&nbsp;</td>
+                    <td class="auto-style11">
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Insert" CssClass="insertBtnstyle"/>
+                    </td>
+                    <td>&nbsp;</td>
+                </tr>
             </table>
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click1" Text="Store user" />
             <br />
-            <br />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="images.aspx">view images</asp:HyperLink>
-            <br />
-            <br />
-&nbsp;&nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Insert" />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-&nbsp;&nbsp;&nbsp;<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-        </div>
+            </div>
     </form>
 </body>
 </html>

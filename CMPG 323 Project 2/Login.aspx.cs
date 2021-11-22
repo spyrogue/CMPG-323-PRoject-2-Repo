@@ -13,10 +13,17 @@ namespace CMPG_323_Project_2
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            EmailTextBox.Text = "brandon@gmail.com";
-            UsernameTextBox.Text = "Brandon";
-            PasswordTextBox.Text = "123";
-            LinkButton1.Visible = false;
+            if (!string.IsNullOrEmpty(Session["LogInUsername"] as string))
+            {
+                EmailTextBox.Text = Session["Email"].ToString();
+                UsernameTextBox.Text = Session["Username"].ToString();
+                LinkButton1.Visible = false;
+            }
+            else
+            {
+                LinkButton1.Visible = false;
+            }
+            
         }
 
         string construct = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30";

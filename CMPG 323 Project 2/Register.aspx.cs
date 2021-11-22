@@ -14,7 +14,6 @@ namespace CMPG_323_Project_2
         protected void Page_Load(object sender, EventArgs e)
         {
             LinkButton1.Visible = false;
-            
         }
 
         string construct = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Brandon\Documents\ImageUser.mdf;Integrated Security=True;Connect Timeout=30";
@@ -42,7 +41,7 @@ namespace CMPG_323_Project_2
                 Session["Username"] = UsernameTBox.Text;
                 Session["Password"] = PasswordTBox.Text;
 
-                string insert_query = @"INSERT INTO User_Table VALUES(@Email,@Username,HASHBYTES('SHA1',@Password))";
+                string insert_query = @"INSERT INTO User_Table VALUES(@Email,@Username,HASHBYTES('SHA',@Password))";
                 connect = new SqlConnection(construct);
                 connect.Open();
                 command = new SqlCommand(insert_query, connect);
@@ -51,7 +50,7 @@ namespace CMPG_323_Project_2
                 command.Parameters.AddWithValue("@Password", PasswordTBox.Text);
                 command.ExecuteNonQuery();
                 connect.Close();
-                //Response.Redirect("Login.aspx");
+                Response.Redirect("Login.aspx");
             }
         }
 
@@ -80,13 +79,7 @@ namespace CMPG_323_Project_2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string encrypt = @"SELECT Password User_Table VALUES(@Email,@Username,HASHBYTES('SHA1',@Password))";
-            string decrypt = @"SELECT Password User_Table Whe";
-            Response.Write("<script>alert('" + encrypt + "')</script>");
-            if (encrypt == decrypt)
-            {
-                CheckBox1.Text = "True";
-            }
+            
         }
     }
 }
