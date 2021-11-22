@@ -64,11 +64,17 @@ namespace CMPG_323_Project_2
             string insertLocation = TextBox5.Text;
             string insertUser = TextBox6.Text;
             string insertImage = Path.GetFileName(fileupload.PostedFile.FileName);
-            fileupload.SaveAs(Server.MapPath("~/Images/" + insertImage));
+            if(insertImage != "")
+            {
+                fileupload.SaveAs(Server.MapPath("~/Images/" + insertImage));
+            }
+            
+            
+           
 
             String ext = System.IO.Path.GetExtension(insertImage);
 
-            if(ext == ".png")
+            if(ext == ".png" || ext == ".tiff" || ext == ".gif" || ext == ".jpg" || ext == ".jpeg" || ext == ".ico" || ext == ".bmp")
             {
                 try
                 {
@@ -144,22 +150,7 @@ namespace CMPG_323_Project_2
             Response.TransmitFile(Server.MapPath(shared));
             Response.End();*/
 
-            int i = Convert.ToInt32(GridView1.SelectedIndex);
-            String ImageName = GridView1.SelectedRow.Cells[3].Text;
-            String CapturedBy = GridView1.SelectedRow.Cells[5].Text;
-            String Tags = GridView1.SelectedRow.Cells[6].Text;
-            String Location = GridView1.SelectedRow.Cells[7].Text;
-            String SharedFrom = GridView1.SelectedRow.Cells[8].Text;
-            String Image = GridView1.SelectedRow.Cells[10].Text;
-            String ImagePath = GridView1.SelectedRow.Cells[10].Text;
-            Response.Write("<script>alert('" + User + "')</script>");
-            con = new SqlConnection(connectionString);
-            con.Open();
-            string sql = "INSERT INTO Shared VALUES('" + ImageName + "','" + CapturedBy + "','" + Location + "','" + Tags + "','" + SharedFrom + "','" + Image + "','" + ImagePath + "')";
-            com = new SqlCommand(sql, con);
-            com.ExecuteNonQuery();
-            con.Close();
-            Response.Write("<script>alert('Image shared successfully')</script>");
+            
 
         }
 
@@ -312,6 +303,25 @@ namespace CMPG_323_Project_2
             Session["LogInUsername"] = null;
             Session["LogInPassword"] = null;
             Response.Redirect("Login.aspx");
+        }
+
+        protected void GridView1_SelectedIndexChanged2(object sender, EventArgs e)
+        {
+            int i = Convert.ToInt32(GridView1.SelectedIndex);
+            String ImageName = GridView1.SelectedRow.Cells[3].Text;
+            String CapturedBy = GridView1.SelectedRow.Cells[5].Text;
+            String Tags = GridView1.SelectedRow.Cells[6].Text;
+            String Location = GridView1.SelectedRow.Cells[7].Text;
+            String SharedFrom = GridView1.SelectedRow.Cells[8].Text;
+            String Image = GridView1.SelectedRow.Cells[9].Text;
+            String ImagePath = GridView1.SelectedRow.Cells[9].Text;
+            con = new SqlConnection(connectionString);
+            con.Open();
+            string sql = "INSERT INTO Shared VALUES('" + ImageName + "','" + CapturedBy + "','" + Location + "','" + Tags + "','" + SharedFrom + "','Images/" + Image + "','" + ImagePath + "')";
+            com = new SqlCommand(sql, con);
+            com.ExecuteNonQuery();
+            con.Close();
+            Response.Write("<script>alert('Image shared successfully')</script>");
         }
     }
 }

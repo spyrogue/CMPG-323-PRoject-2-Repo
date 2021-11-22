@@ -233,9 +233,9 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style10" rowspan="2">
-                    <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ImageId" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows">
+                    <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ImageId" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="GridView1_SelectedIndexChanged2">
                         <Columns>
-                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
+                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" SelectText="Share" />
                             <asp:BoundField DataField="ImageId" HeaderText="ImageId" ReadOnly="True" SortExpression="ImageId" />
                             <asp:BoundField DataField="ImageName" HeaderText="ImageName" SortExpression="ImageName" />
                             <asp:BoundField DataField="Album_Id" HeaderText="Album_Id" SortExpression="Album_Id" />
@@ -243,9 +243,19 @@
                             <asp:BoundField DataField="Tags" HeaderText="Tags" SortExpression="Tags" />
                             <asp:BoundField DataField="Location" HeaderText="Location" SortExpression="Location" />
                             <asp:BoundField DataField="User" HeaderText="User" SortExpression="User" />
-                            <asp:ImageField DataImageUrlField="Image" HeaderText="Image" SortExpression="Image" ControlStyle-Height="200" ControlStyle-Width="200"/>
-                            <asp:BoundField DataField="ImagePath" HeaderText="ImagePath" SortExpression="ImagePath" HeaderStyle-CssClass="style-imagePath" ItemStyle-CssClass="style-imagePath"/>
+                            <asp:ImageField DataImageUrlField="Image" HeaderText="Image" SortExpression="Image" ControlStyle-Height="200" ControlStyle-Width="200">
+<ControlStyle Height="200px" Width="200px"></ControlStyle>
+                            </asp:ImageField>
+                            <asp:BoundField DataField="ImagePath" HeaderText="ImagePath" SortExpression="ImagePath" HeaderStyle-CssClass="style-imagePath" ItemStyle-CssClass="style-imagePath">
+<HeaderStyle CssClass="style-imagePath"></HeaderStyle>
+
+<ItemStyle CssClass="style-imagePath"></ItemStyle>
+                            </asp:BoundField>
                         </Columns>
+
+<HeaderStyle CssClass="header"></HeaderStyle>
+
+<RowStyle CssClass="rows"></RowStyle>
                     </asp:GridView>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ImageUserConnectionString1 %>" DeleteCommand="DELETE FROM [Image_Details] WHERE [ImageId] = @ImageId" InsertCommand="INSERT INTO [Image_Details] ([ImageName], [Album Id], [Captured By], [Tags], [Location], [User], [Image], [ImagePath]) VALUES (@ImageName, @Album_Id, @Captured_By, @Tags, @Location, @User, @Image, @ImagePath)" SelectCommand="SELECT [ImageId], [ImageName], [Album Id] AS Album_Id, [Captured By] AS Captured_By, [Tags], [Location], [User], [Image], [ImagePath] FROM [Image_Details]" UpdateCommand="UPDATE [Image_Details] SET [ImageName] = @ImageName, [Album Id] = @Album_Id, [Captured By] = @Captured_By, [Tags] = @Tags, [Location] = @Location, [User] = @User, [Image] = @Image, [ImagePath] = @ImagePath WHERE [ImageId] = @ImageId">
                         <DeleteParameters>

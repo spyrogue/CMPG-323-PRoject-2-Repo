@@ -27,7 +27,7 @@ namespace CMPG_323_Project_2
             
             if (!string.IsNullOrEmpty(Session["LogInUsername"] as string))
             {
-                string sql = "SELECT * FROM Image_Details WHERE [User] LIKE '%" + Session["LogInUsername"].ToString() + "'";
+                string sql = "SELECT * FROM Image_Details WHERE User LIKE '%" + Session["LogInUsername"].ToString() + "'";
                 ds = new DataSet();
                 adap = new SqlDataAdapter();
                 com = new SqlCommand(sql, con);
@@ -57,8 +57,8 @@ namespace CMPG_323_Project_2
             con = new SqlConnection(connectionString);
             con.Open();
             string search_value = TextBox1.Text;
-            string sql = "SELECT * FROM Image_Details VALUES(@image) WHERE [ImageName] LIKE '%" + search_value + "'" +
-                "OR  [Captured By] LIKE '%" + search_value + "%' OR [User] LIKE '%" + search_value + "%' AND WHERE Image ";
+            string sql = "SELECT [ImageName],[Album Id], [Captured By], [Tags], [Location], [User] FROM Image_Details WHERE ImageName LIKE '%" + search_value + "'" +
+                "OR  [Captured By] LIKE '%" + search_value + "' OR Tags LIKE '%" + search_value + "' OR Location LIKE '%" + search_value + "'";
             ds = new DataSet();
             adap = new SqlDataAdapter();
             com = new SqlCommand(sql, con);

@@ -101,6 +101,47 @@
             width:1900px;
         }
 
+        .textboxStyle{
+            height:30px;
+            width:250px;
+            border-radius:20px;
+            border-width:4px;
+            text-align:center;
+            border-color:white;
+            border-style:solid;
+        }
+
+        .textboxStyle:hover{
+            border-color:forestgreen;
+            border-radius:20px;
+            border-width:4px;
+            height:40px;
+            width:300px;
+        }
+
+        .btnstyle{
+            height:30px;
+            width:150px;
+            border-radius:20px;
+            border-width:4px;
+            text-align:center;
+            border-color:cornflowerblue;
+            border-style:solid;
+        }
+
+        .btnstyle:hover{
+            border-radius:20px;
+            border-width:4px;
+            height:40px;
+            width:160px;
+        }
+
+        .lbl
+        {
+            font-size:large;
+            font-family:sans-serif;
+        }
+
         body{
             background-color:powderblue;
         }
@@ -167,10 +208,10 @@
             <table style="width:100%;">
                 <tr>
                     <td class="auto-style9"></td>
-                    <td class="auto-style9">&nbsp;<asp:Label ID="Label1" runat="server" Text="Search"></asp:Label>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <td class="auto-style9">&nbsp;<asp:Label ID="Label1" runat="server" Text="Search" CssClass="lbl"></asp:Label>
+                        <asp:TextBox ID="TextBox1" runat="server" CssClass="textboxStyle"></asp:TextBox>
 &nbsp;
-                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" CssClass="btnstyle" />
                     </td>
                     <td class="auto-style9"></td>
                 </tr>
@@ -179,7 +220,7 @@
                     <td>
                         <asp:GridView ID="GridView1" runat="server" CssClass="mydatagrid" HeaderStyle-CssClass="header" RowStyle-CssClass="rows">
                             <Columns>
-                                <asp:ImageField>
+                                <asp:ImageField DataImageUrlField="Image" HeaderText="Image" SortExpression="Image" ControlStyle-Height="200" ControlStyle-Width="200">
                                 </asp:ImageField>
                             </Columns>
                         </asp:GridView>
